@@ -1,0 +1,62 @@
+### Récupère toutes les catégories OK
+
+GET http://localhost:3000/api/users
+
+### Crèe une catégorie 
+
+POST http://localhost:3000/api/users
+content-type: application/json
+
+{
+    "route": "/test",
+    "label": "Test"
+}
+
+### Récupère une catégorie
+
+GET http://localhost:3000/api/users/95
+
+### Modifie une catégorie
+
+PATCH http://localhost:3000/api/users/95
+content-type: application/json
+
+{
+    "route": "/test",
+    "label": "Test2"
+}
+
+### Supprime une catégorie
+
+DELETE  http://localhost:3000/api/users/95
+
+### Récupère tous les posts
+GET http://localhost:3000/api/posts
+
+### Crèe un post
+
+POST http://localhost:3000/api/posts
+
+{
+    "user_id": 89,
+    "slug": "test",
+    "title": "test",
+    "excerpt": "test",
+    "content": "test"
+},
+
+### Récupère un post
+
+GET http://localhost:3000/api/posts/1
+
+### Modifie un post
+
+PATCH http://localhost:3000/api/posts/1
+
+### Supprime un post
+
+DELETE  http://localhost:3000/api/posts/1
+
+### Récupère tous les posts d'une catégorie
+
+GET  http://localhost:3000/api/posts/user/:id

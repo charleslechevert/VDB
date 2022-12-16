@@ -2,6 +2,9 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TABLE trip;
+DROP TABLE "user";
+
+
 
 COMMIT;
