@@ -1,4 +1,4 @@
-//const tripController = require("./trip");
+const tripController = require("./trip");
 const userController = require("./user");
 
-module.exports = {  userController };
+module.exports = {  userController, tripController };

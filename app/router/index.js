@@ -1,4 +1,4 @@
-//const tripRouter = require("./trip");
+const tripRouter = require("./trip");
 const userRouter = require("./user");
 
-module.exports = { userRouter };
+module.exports = { userRouter, tripRouter };

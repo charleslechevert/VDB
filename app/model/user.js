@@ -1,16 +1,16 @@
 const client = require("./dbClient");
-//const errorHandler = require("../service/error/errorHandler");
-//const debug = require('debug')('model');
+const errorHandler = require("../service/error/errorHandler");
+
 
 const model = {
     async findAll(){
         let users;
         try{
-            const result = await client.query("SELECT * FROM user;");
+            const result = await client.query('SELECT * FROM "user";');
             users = result.rows;
         }
         catch(err){
-            debug(err);
+            
             errorHandler.logError(err);
         }
 
@@ -18,15 +18,14 @@ const model = {
     },
     async insert(user){
         let userDB;
-        debug(user);
         try{
-            const sqlQuery = "INSERT INTO public.user(route, label) VALUES ($1, $2) RETURNING *;";
-            const values = [user.route,user.label];
+            const sqlQuery = "INSERT INTO public.user(fname, lname, email, companyrole) VALUES ($1, $2, $3, $4) RETURNING *;";
+            const values = [user.fname,user.lname,user.email,user.companyrole];
             const result = await client.query(sqlQuery,values);
             userDB = result.rows[0];
         }
         catch(err){
-            debug(err);
+            
             errorHandler.logError(err);
         }
 
@@ -35,13 +34,13 @@ const model = {
     async findById(id){
         let user;
         try{
-            const sqlQuery = "SELECT * FROM user WHERE id=$1;";
+            const sqlQuery = 'SELECT * FROM "user" WHERE id=$1;';
             const values = [id];
             const result = await client.query(sqlQuery,values);
             user = result.rows[0];
         }
         catch(err){
-            debug(err);
+            
             errorHandler.logError(err);
         }
 
@@ -51,14 +50,14 @@ const model = {
         let userDB;
         try{
             const sqlQuery = `UPDATE public.user
-            SET route=$1, label=$2
-            WHERE id=$3 RETURNING *;`;
-            const values = [user.route,user.label,id];
+            SET fname=$1, lname=$2, email=$3, companyrole=$4
+            WHERE id=$5 RETURNING *;`;
+            const values = [user.fname,user.lname,user.email,user.companyrole,id];
             const result = await client.query(sqlQuery,values);
             userDB = result.rows[0];
         }
         catch(err){
-            debug(err);
+            
             errorHandler.logError(err);
         }
 
@@ -75,7 +74,7 @@ const model = {
             // à voir ce que je remonte
         }
         catch(err){
-            debug(err);
+            
             errorHandler.logError(err);
         }
 

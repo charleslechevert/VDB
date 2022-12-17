@@ -1,10 +1,10 @@
 const express = require('express');
-const { userController } = require("../controller");
+const { tripController } = require("../controller");
 const validationModule = require('../validation/validationModule');
-const {  schemaUser } = require("../validation/schema");
+const {  schemaTrip } = require("../validation/schema");
 const router = express.Router();
 
-// Toutes mes urls commencent par /users
+// Toutes mes urls commencent par /trips
 
 /**
  * Une catégorie 
@@ -20,7 +20,7 @@ const router = express.Router();
  * @return {array<Catégorie>} 200 - Liste de catégories
  * @return {Error} 500 - Unexpected error
  */
-router.get("/",userController.getAllUsers);
+router.get("/",tripController.getAllTrips);
 /**
  * POST /api/categories
  * @summary Ajoute une catégorie
@@ -29,9 +29,9 @@ router.get("/",userController.getAllUsers);
  * @return {object} 200 - retourne la catégorie créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/"  , validationModule.validate(schemaUser,"body"), userController.addUser);
-router.get("/:id",userController.getUser);
-router.patch("/:id",userController.modifyUser);
-router.delete("/:id",userController.deleteUser);
+router.post("/", validationModule.validate(schemaTrip,"body"), tripController.addTrip);
+router.get("/:id",tripController.getTrip);
+router.patch("/:id",tripController.modifyTrip);
+router.delete("/:id",tripController.deleteTrip);
 
 module.exports = router;

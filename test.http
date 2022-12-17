@@ -1,62 +1,83 @@
-### Récupère toutes les catégories OK
+### Récupère toutes les users OK
 
 GET http://localhost:3000/api/users
 
-### Crèe une catégorie 
+### Crèe une user OK
 
 POST http://localhost:3000/api/users
 content-type: application/json
 
 {
-    "route": "/test",
-    "label": "Test"
+    "fname": "Mario",
+    "lname": "Broz",
+    "email": "marios@vdb.fr",
+    "companyrole": "sailor"
+}
+### Récupère une user Ok
+
+GET http://localhost:3000/api/users/3
+
+### Modifie une user OK
+
+PATCH http://localhost:3000/api/users/2
+content-type: application/json
+
+
+{
+    "fname": "Didier",
+    "lname": "Dupré",
+    "email": "didier@vdb.fr",
+    "companyrole": "sailor"
 }
 
-### Récupère une catégorie
+### Supprime une user OK
 
-GET http://localhost:3000/api/users/95
+DELETE  http://localhost:3000/api/users/7
 
-### Modifie une catégorie
+### Récupère tous les trips OK
+GET http://localhost:3000/api/trips
 
-PATCH http://localhost:3000/api/users/95
+### Crèe un trip OK
+
+POST http://localhost:3000/api/trips
 content-type: application/json
 
 {
-    "route": "/test",
-    "label": "Test2"
+    "type_trip": "navette",
+    "boat": "Bréhatine",
+    "harbour": "Acouest",
+    "departure": "17:40",
+    "arrival": "18:40",
+    "day_trip": "13/07/22",
+    "quantity": 57,
+    "delay_trip": "false",
+    "reason": "",
+    "user_id_": 2
 }
 
-### Supprime une catégorie
+### Récupère un trip OK
 
-DELETE  http://localhost:3000/api/users/95
+GET http://localhost:3000/api/trips/1
 
-### Récupère tous les posts
-GET http://localhost:3000/api/posts
+### Modifie un trip OK
 
-### Crèe un post
-
-POST http://localhost:3000/api/posts
+PATCH http://localhost:3000/api/trips/5
+content-type: application/json
 
 {
-    "user_id": 89,
-    "slug": "test",
-    "title": "test",
-    "excerpt": "test",
-    "content": "test"
-},
+    "type_trip": "navette",
+    "boat": "Bréhatine",
+    "harbour": "Acouest",
+    "departure": "17:40",
+    "arrival": "19:40",
+    "day_trip": "13/07/22",
+    "quantity": 59,
+    "delay_trip": true,
+    "reason": "blabla",
+    "user_id_": 2
+}
 
-### Récupère un post
+### Supprime un trip OK
 
-GET http://localhost:3000/api/posts/1
+DELETE  http://localhost:3000/api/trips/5
 
-### Modifie un post
-
-PATCH http://localhost:3000/api/posts/1
-
-### Supprime un post
-
-DELETE  http://localhost:3000/api/posts/1
-
-### Récupère tous les posts d'une catégorie
-
-GET  http://localhost:3000/api/posts/user/:id
