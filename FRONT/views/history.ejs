@@ -1,15 +1,15 @@
 <%- include("partials/setup") %>
 <%- include("partials/header") %>
+<script src="history.js" defer></script>
 
 <section class="triplist">
     <div class="tripform__title--container">
-        <img src="ship.png" class="tripform__logo" alt="">
         <h2 class="tripform__title">Historique</h2>
     </div>
     <div>
         <% for (trip of trips) { %>
         <!-- START TRIP LINEE-->
-        <div class="tripline__container">
+        <a href="/modifytrip/<%= trip.id %>" class="tripline__container">
             <div class="tripline__subcontainer">
                 
                 <div class="tripline__subsubcontainer">
@@ -33,14 +33,19 @@
                     <div class="tripline__info-text tripline__info-text-background2"><%= trip.harbour %></div>
                 </div>
                 <div class="tripline__subsubcontainer">
-                    <div class="tripline__info-text tripline__info-text-background3"><%= trip.day_trip %></div>
+                    <div class="tripline__info-text tripline__info-text-background3" id="day_trip"><%= trip.day_trip %></div>
+                    <% if(trip.delay_trip) { %>
                     <div class="tripline__info-text tripline__info-text-background4">À l'heure</div>
+                    <% } else { %>
+                    <div class="tripline__info-text tripline__info-text-background5">En retard</div>
+                    <% } %>
+
                 </div>
                 
-                <div class="tripline__hours"><%= trip.departure %> - <%= trip.arrival %></div>
+                <div class="tripline__hours"><%= trip.departure.slice(0,5) %> - <%= trip.arrival.slice(0,5) %></div>
 
             </div>
-            </div>
+        </a>
             <!-- END TRIP LINEE-->
             <% } %>
         

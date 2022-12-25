@@ -1,0 +1,74 @@
+<%- include("partials/setup") %>
+<%- include("partials/header") %>
+<script src="/modifytrip.js" defer></script>
+
+<section class="tripform">
+    <div class="tripform__title--container">
+        <h2 class="tripform__title">Modifier la traversée</h2>
+    </div>
+    
+    <form class="tripform__form" method="post">
+        <label class="tripform__label">Bateau</label> 
+        <select name="boat" id="boat" data-boat="<%=trip.boat%>" class="tripform__select">
+            <option class="tripform__option" value="Bréhatine">Bréhatine</option>
+            <option class="tripform__option" value="Enez">Enez</option>
+            <option class="tripform__option" value="Kerpont">Kerpont</option>
+            <option class="tripform__option" value="Cupidon">Cupidon</option>
+            <option class="tripform__option" value="Kehops">Kehops</option>
+        </select>
+        <label class="tripform__label">Type de traversée</label>
+        <select name="type_trip" id="type_trip" data-type_trip="<%=trip.type_trip%>" class="tripform__select">
+            <option class="tripform__option" value="Directe">Directe</option>
+            <option class="tripform__option" value="Tour">Tour de l'île</option>
+            <option class="tripform__option" value="Extérieur">Extérieur</option>
+            <option class="tripform__option" value="Affrêtement">Affrêtement</option>
+        </select>
+        <label class="tripform__label">Port</label>
+        <select name="harbour" id="harbour" data-harbour="<%=trip.harbour%>" class="tripform__select">
+            <option class="tripform__option" value="Arcouest">Arcouest</option>
+            <option class="tripform__option" value="Bréhat">Bréhat</option>
+            <option class="tripform__option" value="Scolaire">Scolaire</option>
+            <option class="tripform__option" value="Tour">Tour</option>
+            <option class="tripform__option" value="Erquy">Erquy</option>
+            <option class="tripform__option" value="Saint Quay">Saint Quay</option>
+            <option class="tripform__option" value="Saint Quay-Binic">Saint Quay-Binic</option>
+        </select>
+        <label class="tripform__label">Nombre de passagers</label>
+        <input type ="number" name="quantity" class="tripform__input--passenger" value="<%=trip.quantity%>" required>
+        <label class="tripform__label">Jour</label>
+        <input type="date"  class="tripform__hours" value="<%=trip.day_trip%>" name="day_trip" id="day_trip">
+        <label class="tripform__label" value="14:30">Heure de départ</label>
+        <input class="tripform__hours" type="time" id="departure" value="<%=trip.departure%>" name="departure"
+            min="06:00" max="23:00" required>
+        <label class="tripform__label">Heure d'arrivée</label>
+        <input class="tripform__hours" type="time" id="arrival" value="<%=trip.arrival%>" name="arrival"
+            min="06:00" max="23:00">
+        <label class="tripform__label">Retard</label>
+        <div>
+            <label>
+                <% if(trip.delay_trip) { %>
+                    <input type="radio" name="delay_trip" value="true" checked>
+                <% } else { %>
+                    <input type="radio" name="delay_trip" value="true">
+                <% } %>
+                OUI
+            </label>
+            <label>
+                <% if(!trip.delay_trip) { %>
+                    <input type="radio" name="delay_trip" value="false" checked>
+                <% } else { %>
+                    <input type="radio" name="delay_trip" value="false">
+                <% } %>
+                NON
+            </label>
+        </div>
+        <label class="tripform__label">Raison du retard</label>
+        <input class="tripform__input" name="reason" value="<%=trip.reason%>">
+        <input class="tripform__validate" type="submit">
+        
+    </form>
+</section>
+
+        </main>
+    </body>
+</html>

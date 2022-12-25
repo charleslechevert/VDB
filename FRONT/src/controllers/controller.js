@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const axios = require('axios')
 
 const controller = {
     login(req,res){
@@ -15,7 +14,6 @@ const controller = {
         try {
         const response = await fetch('http://localhost:5000/api/trips/with-sailor')
         const trips = await response.json()
-        console.log(trips[0])
         res.render("history", { trips })
         } catch(error) {
             console.error(error);
@@ -29,7 +27,6 @@ const controller = {
                 data.arrival = '00:00'
             }
             data.quantity = parseInt(data.quantity)
-            console.log(data)
             const response = await fetch(`http://localhost:5000/api/trips`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
@@ -49,6 +46,15 @@ const controller = {
             console.log(err)
         }
         res.redirect('/history')
+    },
+    async modifyTrip(req,res) {
+        try {
+            const response = await fetch(`http://localhost:5000/api/trips/${req.params.id}`)
+            const trip = await response.json()
+            res.render("modifytrip", { trip })
+            } catch(error) {
+                console.error(error);
+            }
     }
 
 };
