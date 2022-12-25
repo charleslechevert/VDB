@@ -77,7 +77,20 @@ const model = {
         }
 
         return;
+    },
+    async findTripbyDayWithUser() {
+        let trips;
+        try{
+            const result = await client.query(`SELECT trip.id, trip.type_trip, trip.boat, trip.harbour, trip.departure, trip.arrival, trip.day_trip, trip.quantity, trip.delay_trip, trip.reason, "user".fname FROM trip LEFT JOIN "user" ON trip.user_id_="user".id`);
+            trips = result.rows;
+        }
+        catch(err){
+            errorHandler.logError(err);
+        }
+
+        return trips;
     }
+    
 };
 
 module.exports = model;

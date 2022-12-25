@@ -19,7 +19,7 @@ const model = {
     async insert(user){
         let userDB;
         try{
-            const sqlQuery = "INSERT INTO public.user(fname, lname, email, companyrole) VALUES ($1, $2, $3, $4) RETURNING *;";
+            const sqlQuery = "INSERT INTO public.user(fname, lname, email, password, companyrole) VALUES ($1, $2, $3, $4, $5) RETURNING *;";
             const values = [user.fname,user.lname,user.email,user.companyrole];
             const result = await client.query(sqlQuery,values);
             userDB = result.rows[0];
@@ -79,7 +79,23 @@ const model = {
         }
 
         return;
+    },
+    async findByEmailByPwd(email, password){
+        let user;
+        try{
+            const sqlQuery = 'SELECT * FROM "user" WHERE email=$1 AND password=$2;';
+            const values = [email, password];
+            const result = await client.query(sqlQuery,values);
+            user = result.rows[0];
+        }
+        catch(err){
+            
+            errorHandler.logError(err);
+        }
+
+        return user;
     }
+
 };
 
 module.exports = model;

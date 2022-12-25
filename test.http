@@ -1,10 +1,10 @@
 ### Récupère toutes les users OK
 
-GET http://localhost:3000/api/users
+GET http://localhost:5000/api/users
 
 ### Crèe une user OK
 
-POST http://localhost:3000/api/users
+POST http://localhost:5000/api/users
 content-type: application/json
 
 {
@@ -35,11 +35,11 @@ content-type: application/json
 DELETE  http://localhost:3000/api/users/7
 
 ### Récupère tous les trips OK
-GET http://localhost:3000/api/trips
+GET http://localhost:5000/api/trips
 
 ### Crèe un trip OK
 
-POST http://localhost:3000/api/trips
+POST http://localhost:5000/api/trips
 content-type: application/json
 
 {
@@ -81,3 +81,12 @@ content-type: application/json
 
 DELETE  http://localhost:3000/api/trips/5
 
+### Login
+
+POST http://localhost:5000/api/login
+content-type: application/json
+
+{
+    "email": "carlos@vvdb.fr",
+    "password": "Hello22+"
+}

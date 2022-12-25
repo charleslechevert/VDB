@@ -1,0 +1,88 @@
+.tripform {
+    width: 90vw;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    margin : 2vh auto;
+}
+
+.tripform__title {
+    text-align: center;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-transform: uppercase;
+    margin-bottom: 0vh;
+
+}
+
+.tripform__label {
+    text-transform: uppercase;
+    text-align: center;
+    margin:2vh;
+}
+
+.tripform__input {
+    text-align: center;
+    border-radius: 25px;
+    padding : 1vh;
+}
+
+.tripform__form {
+    padding-bottom: 3vh;
+    
+}
+
+.tripform__select {
+    padding: 1vh;
+    border-radius: 25px;
+    background-color: white;
+    text-transform: uppercase;
+    border: 1px solid black;
+}
+
+.tripform__option {
+    text-transform: uppercase;
+}
+
+
+
+.tripform__input--passenger {
+    padding : 1vh;
+    width: 10vh;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.tripform__hours {
+    padding: 1vh;
+    border-radius: 25px;
+}
+
+.tripform__title--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    
+}
+
+.tripform__logo {
+    width: 6vh;
+    height: 6vh;
+    margin-right: 2vh;
+}
+
+.tripform__validate {
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    padding: 1.2vh;
+    border-radius: 8px;
+    text-transform: uppercase;
+    margin-top: 2vh ;
+
+
+}

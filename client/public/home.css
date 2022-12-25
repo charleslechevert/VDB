@@ -1,0 +1,16 @@
+.home__option-container {
+    display: block;
+    max-width: 800px;
+    width: 90vh;
+    background-color: white;
+    border-radius: 8px;
+    padding:  5vh 0;
+    margin: 2vh auto; 
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+
+
+}

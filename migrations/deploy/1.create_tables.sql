@@ -6,6 +6,7 @@ CREATE TABLE "user"
     fname text NOT NULL,
     lname text NOT NULL,
     email text NOT NULL UNIQUE,
+    password text NOT NULL,
     companyrole text NOT NULL,
     PRIMARY KEY (id)
 );

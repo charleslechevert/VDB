@@ -31,7 +31,14 @@ const controller = {
         const result = await tripModel.delete(req.params.id);
 
         res.json(result);
+    },
+    async getTripbyDayWithUser(req,res){
+
+        const result = await tripModel.findTripbyDayWithUser();
+
+        res.json(result);
     }
+
 };
 
 module.exports = controller;

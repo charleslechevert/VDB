@@ -21,6 +21,7 @@ const router = express.Router();
  * @return {Error} 500 - Unexpected error
  */
 router.get("/",tripController.getAllTrips);
+router.get("/with-sailor",tripController.getAllTrips);
 /**
  * POST /api/categories
  * @summary Ajoute une catégorie
@@ -29,7 +30,7 @@ router.get("/",tripController.getAllTrips);
  * @return {object} 200 - retourne la catégorie créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/", validationModule.validate(schemaTrip,"body"), tripController.addTrip);
+router.post("/", /*validationModule.validate(schemaTrip,"body",*/ tripController.addTrip);
 router.get("/:id",tripController.getTrip);
 router.patch("/:id",tripController.modifyTrip);
 router.delete("/:id",tripController.deleteTrip);

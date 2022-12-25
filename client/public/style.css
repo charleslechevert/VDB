@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgb(142, 224, 133) 0%,     rgb(27, 20, 122) 100%);
+}
+
+#root{
+    height:100%;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    height: 70vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    
+}
+
+.login__title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 20%;
+}
+
+img {
+    height: 8vh;
+}
+
+.login__title-text {
+    background: linear-gradient(135deg, rgb(142, 224, 133) 0%,     rgb(27, 20, 122) 100%);
+    padding: 1vh 3vh;
+    border-radius: 25px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+form {
+    height : 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form__container-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}
+
+.form__label {
+    margin-bottom: 0.8vh;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.form__input {
+    border : none;
+    border-bottom: 2px solid rgb(123, 123, 123);
+}
+
+.form__validate {
+    background: linear-gradient(135deg, rgb(142, 224, 133) 0%,     rgb(27, 20, 122) 100%);
+    width: 200px;
+    padding: 1vh;
+    border: none;
+    border-radius: 25px;
+    font-size: 4vh;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.form__forgot {
+    color: gray;
+}
+
+.errmsg {
+    color: rgb(177, 27, 27);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding : 0 2vh 0 2vh;
+    text-align: center;
+}
