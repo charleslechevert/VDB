@@ -1,0 +1,53 @@
+<%- include("partials/setup") %>
+<%- include("partials/header") %>
+
+<section class="triplist">
+    <div class="tripform__title--container">
+        <img src="ship.png" class="tripform__logo" alt="">
+        <h2 class="tripform__title">Historique</h2>
+    </div>
+    <div>
+        <% for (trip of trips) { %>
+        <!-- START TRIP LINEE-->
+        <div class="tripline__container">
+            <div class="tripline__subcontainer">
+                
+                <div class="tripline__subsubcontainer">
+                    <img class="tripline__info-logo" src="sailor.png" alt="">
+                    <div class="tripline__info-text"><%= trip.fname %></div>
+                </div>
+                <div class="tripline__subsubcontainer">
+                    <img class="tripline__info-logo" src="ship.png" alt="">
+                    <div class="tripline__info-text"><%= trip.boat %></div>
+                </div>
+                <div class="tripline__subsubcontainer">
+                    <img class="tripline__info-logo" src="seat.png" alt="">
+                    <div class="tripline__info-text"><%= trip.quantity %> passagers</div>
+                </div>
+
+            </div>
+
+            <div class="tripline__subcontainer2">
+                <div class="tripline__subsubcontainer">
+                    <div class="tripline__info-text tripline__info-text-background1"><%= trip.type_trip %></div>
+                    <div class="tripline__info-text tripline__info-text-background2"><%= trip.harbour %></div>
+                </div>
+                <div class="tripline__subsubcontainer">
+                    <div class="tripline__info-text tripline__info-text-background3"><%= trip.day_trip %></div>
+                    <div class="tripline__info-text tripline__info-text-background4">À l'heure</div>
+                </div>
+                
+                <div class="tripline__hours"><%= trip.departure %> - <%= trip.arrival %></div>
+
+            </div>
+            </div>
+            <!-- END TRIP LINEE-->
+            <% } %>
+        
+    </div>
+</div>
+</section>
+
+        </main>
+    </body>
+</html>
