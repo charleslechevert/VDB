@@ -1,7 +1,15 @@
+.home__container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 .home__option-container {
     display: block;
     max-width: 800px;
-    width: 90vh;
+    width: 90vw;
     background-color: white;
     border-radius: 8px;
     padding:  5vh 0;

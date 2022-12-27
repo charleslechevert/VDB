@@ -1,0 +1,27 @@
+.export__date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 4vh;
+}
+
+.export__date {
+    border-radius: 25px;
+    padding:1vh;
+}
+
+.export__submit {
+    margin-bottom: 4vh;
+    border-radius: 8px;
+    padding: 2vh;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 900;
+    font-size: 3vh;
+    background-color: rgb(58,58,58);
+    box-shadow: 3px 3px gray;
+
+}
+

@@ -4,12 +4,22 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    height: 7vh;
+    height: 10vh;
     background-color: rgb(58,58,58);
     color: white;
 
 }
 
-.navbar_logo {
-    width: 5vh;
+.navbar__logo {
+    height: 7vh;
 }
+
+.navbar__logout {
+    background-color: rgb(94, 93, 93);
+    padding: 1.5vh;
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: 2px 2px grey;
+    border-radius: 8px;
+}
+

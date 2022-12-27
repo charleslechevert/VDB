@@ -32,11 +32,16 @@ const controller = {
 
         res.json(result);
     },
-    async getTripbyDayWithUser(req,res){
+    async getTripWithUser(req,res){
 
-        const result = await tripModel.findTripbyDayWithUser();
+        const result = await tripModel.findTripWithUser();
 
         res.json(result);
+    },
+    async getExcelExport(req,res) {
+        console.log(req.body)
+        const result= await tripModel.findExcelExport(req.body.start, req.body.end)
+        res.json(result)
     }
 
 };

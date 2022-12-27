@@ -1,15 +1,14 @@
 require("dotenv").config();
 const { userRouter, tripRouter, authRouter} = require("./app/router");
 const express = require('express');
-const jwt = require('jsonwebtoken')
 const app = express(); // on crèe une instance d'un server Express
 const errorHandler = require("./app/service/error/errorHandler");
 const cors = require('cors');
-const { JsonWebTokenError } = require("jsonwebtoken");
+
 
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://process.ENV.URL'],
     methods: ['GET', 'POST'],
     credentials: true
   }));
@@ -23,10 +22,10 @@ app.use(cors({
     next();
 });
 
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
-
+console.log('yo')
 
 app.use("/api/users",userRouter);
 app.use("/api/trips",tripRouter);

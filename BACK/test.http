@@ -15,11 +15,11 @@ content-type: application/json
 }
 ### Récupère une user Ok
 
-GET http://localhost:3000/api/users/3
+GET http://process.ENV.URL/api/users/3
 
 ### Modifie une user OK
 
-PATCH http://localhost:3000/api/users/2
+PATCH http://process.ENV.URL/api/users/2
 content-type: application/json
 
 
@@ -32,10 +32,19 @@ content-type: application/json
 
 ### Supprime une user OK
 
-DELETE  http://localhost:3000/api/users/7
+DELETE  http://process.ENV.URL/api/users/7
 
 ### Récupère tous les trips OK
 GET http://localhost:5000/api/trips
+
+### Récupère tous les trips entre deux dates (pour le excel)
+POST http://localhost:5000/api/trips/excel
+content-type: application/json
+
+{
+    "start": "24/12/2022",
+    "end": "26/12/2022"
+}
 
 ### Crèe un trip OK
 
@@ -43,25 +52,25 @@ POST http://localhost:5000/api/trips
 content-type: application/json
 
 {
-    "type_trip": "navette",
-    "boat": "Bréhatine",
-    "harbour": "Acouest",
-    "departure": "17:40",
-    "arrival": "18:40",
-    "day_trip": "13/07/22",
-    "quantity": 57,
-    "delay_trip": "false",
-    "reason": "",
-    "user_id_": 2
+  "boat": "Bréhatine",
+  "type_trip": "Directe",
+  "harbour": "Arcouest",
+  "quantity": 7,
+  "day_trip": "2022-12-25",
+  "departure": "15:15",
+  "arrival": "00:00",
+  "delay_trip": "false",
+  "reason": "",
+  "user_id_": 1
 }
 
 ### Récupère un trip OK
 
-GET http://localhost:3000/api/trips/1
+GET http://localhost:5000/api/trips/1
 
 ### Modifie un trip OK
 
-PATCH http://localhost:3000/api/trips/5
+PATCH http://localhost:5000/api/trips/2
 content-type: application/json
 
 {
@@ -79,7 +88,7 @@ content-type: application/json
 
 ### Supprime un trip OK
 
-DELETE  http://localhost:3000/api/trips/5
+DELETE  http://process.ENV.URL/api/trips/5
 
 ### Login
 
