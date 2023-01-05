@@ -7,7 +7,7 @@ CREATE TABLE "user"
     lname text NOT NULL,
     email text NOT NULL UNIQUE,
     password text NOT NULL,
-    companyrole text NOT NULL,
+    admin boolean NOT NULL,
     PRIMARY KEY (id)
 );
 

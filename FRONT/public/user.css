@@ -1,0 +1,73 @@
+.user__add-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.user__add-button {
+    display: inline-block;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    background-color: darkgreen;
+    padding: 1.5vh;
+    box-shadow: 3px 3px rgb(17, 176, 75);
+    margin: auto;
+    text-align: center;
+    margin : 2vh 0;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.user__container {
+    margin: 4vh auto;
+    width: 95vw;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2vh;
+
+}
+
+.user__table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+}
+
+.user__header {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.user__table-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0.8vh;
+    text-transform: uppercase;
+    border-bottom: 1px solid darkgrey;
+    padding: 0.6vh;
+    
+}
+
+.user__tabl-img {
+    width: 5vh;
+    height: 5vh;
+}
+
+.user__email {
+    width: 50%;
+}
+
+.user__role {
+    width: 35%;
+}
+
+.user__delete {
+    width: 15%;
+}

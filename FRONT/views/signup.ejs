@@ -1,0 +1,52 @@
+<%- include("partials/setup") %>
+
+    <div class="container">
+        <div class="modal ">
+            <div class="tripform__title--container">
+                <h2 class="tripform__title">Ajouter un utilisateur</h2>
+            </div>
+            <form class="form" method="post">
+                <div class="form__container-item">
+                    <label class="form__label">prénom</label>
+                    <input class="form__input"  id = "fname" name="fname">
+                </div>
+                <div class="form__container-item">
+                    <label class="form__label">nom</label>
+                    <input class="form__input"  id = "lname" name="lname">
+                </div>
+                <div class="form__container-item">
+                    <label class="form__label">admin?</label>
+                    <div class="signup__form-admin-container">
+                    <div>
+                        <label for="radio-true">OUI</label>
+                        <input type="radio" id="radio-true" name="admin" value="true" >
+                    </div>
+                    <div>
+                        <label for="radio-false">NON</label>
+                        <input type="radio" id="radio-false" name="admin" value="false" checked>
+                    </div>
+                    </div>
+                    
+                </div>
+                <div class="form__container-item">
+                    <label class="form__label"> email</label> 
+                    <input class="form__input" id = "email" name="email">
+                </div>
+                <div class="form__container-item">
+                    <label class="form__label">mot de passe</label>
+                    <input class="form__input" type="password" id = "password" name="password">
+                </div>
+                <div class="form__container-item">
+                    <label class="form__label">confirmer mot de passe</label>
+                    <input class="form__input" type="password" id = "password_conf" name="password_conf">
+                </div>
+                <% if(locals.errorMessage) { %>
+                    <p class="errmsg"><%=errorMessage%></p>
+                <% } %> 
+                <button class="form__validate">Valider</button>
+            </form>
+        </div>
+        </div>
+    </main>
+</body>
+</html>

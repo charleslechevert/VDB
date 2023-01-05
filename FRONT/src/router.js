@@ -1,10 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./controllers/controller');
+const authController = require('./controllers/authController');
 const excelController = require('./controllers/excelController');
 
 
-router.get("/login",controller.login);
+router.get("/signin",authController.signin);
+router.post("/signin",authController.formSignin);
+
+router.get("/users",authController.users);
+router.get("/signup",authController.renderSignupPage);
+router.post("/signup",authController.formSignup);
+
 router.get("/",controller.home);
 
 router.get("/trip",controller.trip);

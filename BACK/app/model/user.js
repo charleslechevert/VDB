@@ -46,6 +46,7 @@ const model = {
 
         return user;
     },
+
     async update(id,user){
         let userDB;
         try{

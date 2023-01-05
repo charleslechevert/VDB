@@ -1,0 +1,40 @@
+<%- include("partials/setup") %>
+<%- include("partials/header") %>
+
+
+<section class="user__container">
+    <div class="user__add-button-container">
+        <a class="user__add-button" href="/signup">Ajouter un utilisateur</a>
+    </div>
+
+    <div class="user__table">
+        <div class="user__table-row user__header">
+            <p class="user__email">EMAIL</p>
+            <p class="user__role">ADMIN?</p>
+            <p class="user__delete"></p>
+        </div>
+        <% for(user of users) { %>
+        <div class="user__table-row">
+            <p class="user__email"><%= user.email%></p>
+            <% if(user.admin) { %>
+                <p class="user__role">OUI</p>
+            <% } else { %>
+                <p class="user__role">NON</p>
+            <% } %>
+            
+            <div class="user__delete">
+                <img class="user__tabl-img" src="delete.png" alt="">
+            </div>
+            
+        </div>
+        <% } %>
+
+    </div>
+
+
+    
+</section>
+
+        </main>
+    </body>
+</html>

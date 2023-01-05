@@ -13,12 +13,14 @@ const controller = {
 
         res.json(userDB);
     },
+    
     async getUser(req,res){
 
         const user = await userModel.findById(req.params.id);
 
         res.json(user);
     },
+
     async modifyUser(req,res){
         const user = req.body; // les modifications apportées à la catégorie
 

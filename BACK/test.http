@@ -17,11 +17,12 @@ content-type: application/json
 
 GET http://process.ENV.URL/api/users/3
 
+
+
 ### Modifie une user OK
 
 PATCH http://process.ENV.URL/api/users/2
 content-type: application/json
-
 
 {
     "fname": "Didier",

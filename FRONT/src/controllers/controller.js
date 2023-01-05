@@ -1,9 +1,7 @@
 const fetch = require('node-fetch')
 
 const controller = {
-    login(req,res){
-        res.render("login")
-    },
+
     home(req,res){
         res.render("home")
     },
