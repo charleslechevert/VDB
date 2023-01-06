@@ -1,5 +1,7 @@
 const fetch = require('node-fetch')
 const bcrypt = require('bcrypt');
+const validate = require('validate');
+const SignupConstraints = require('../services/dataConstraints')
 
 const authController = {
     signin(req,res){
@@ -47,6 +49,9 @@ const authController = {
     },
     async formSignup(req,res) {
         let users;
+
+    
+
         try {
             const response = await fetch('http://localhost:5000/api/users');
              users = await response.json();
@@ -71,6 +76,31 @@ const authController = {
         });
         return;
         }
+
+        //hash the password
+        const passwordHashed = await bcrypt.hash(req.body.password, 10);
+        req.body.password = passwordHashed;
+
+        delete req.body.password_conf
+        console.log(req.body)
+
+        try {
+            const userCreated = await fetch(`http://localhost:5000/api/users`, {
+                method: 'POST',
+                // on passe les données du formulaire en body du POST
+                body: JSON.stringify(req.body),
+                headers: {
+                    'Content-Type': 'application/json'
+                  }
+            });
+            
+            //req.session.userId = userCreated.id;
+          } catch(e) {
+            res.render('signup', {
+              errorMessage: 'Veuillez vérifier les champs du formulaire'
+            });
+            return;
+          }
 
         res.redirect('/users')
     }
