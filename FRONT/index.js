@@ -24,6 +24,10 @@ app.use(express.static("public"));
 
 app.use(router);
 
+app.get('*',(req,res) => {
+    res.redirect('/')
+})
+
 const PORT = process.env.PORT ?? 3002;
 
 app.listen(PORT, () => {

@@ -5,6 +5,7 @@ const authController = require('./controllers/authController');
 const userController = require('./controllers/userController');
 const excelController = require('./controllers/excelController');
 const authMiddleware = require('./services/auth');
+const { appendFile } = require('fs');
 
 
 router.get("/signin",authController.signin);
@@ -32,6 +33,7 @@ router.get("/history",authMiddleware.checkIsLogged,controller.history);
 
 router.get("/export",authMiddleware.checkIsLogged,controller.export);
 router.post("/export",authMiddleware.checkIsLogged,excelController.exportData);
+
 
 
 module.exports = router;

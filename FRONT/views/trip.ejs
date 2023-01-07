@@ -44,16 +44,16 @@
         <label class="tripform__label">Retard</label>
         <div>
             <label>
-                <input type="radio" name="delay_trip" value="true">
+                <input type="radio" id="tripform__delay-yes" name="delay_trip" value="true">
                 OUI
             </label>
             <label>
-                <input type="radio" name="delay_trip" value="false" checked>
+                <input type="radio" id="tripform__delay-no" name="delay_trip" value="false" checked>
                 NON
             </label>
         </div>
-        <label class="tripform__label">Raison du retard</label>
-        <input class="tripform__input" name="reason">
+        <label id="tripform_reasonLabel" class="tripform__label">Raison du retard</label>
+        <input id="tripform_reasonInput" class="tripform__input" name="reason">
         <% if(locals.errMsg) { %>
             <p class="trip__errmsg"><%=locals.errMsg%></p>
         <% } %>

@@ -206,3 +206,10 @@
     font-weight: 900;
 }
 
+#tripform_reasonLabel {
+    display: none;   
+}
+
+#tripform_reasonInput {
+    display: none;   
+}

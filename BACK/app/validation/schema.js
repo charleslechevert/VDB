@@ -6,23 +6,23 @@ const schemaUser = Joi.object({
     fname: Joi.string(),
     lname: Joi.string(),
     email: Joi.string().email(),
-    companyrole: Joi.string()
+    admin: Joi.boolean()
 }).required().min(4);
 
 const schemaTrip = Joi.object({
-    type_trip : Joi.string(),
-    boat : Joi.string(),
-    harbour : Joi.string(),
-    departure : Joi.string().regex(RegExp("/^([0-9]{2})\:([0-9]{2})$/")),
-    arrival : Joi.string().regex(RegExp("/^([0-9]{2})\:([0-9]{2})$/")),
-    //day_trip : Joi.date().format('YYYY-MM-DD'),
-    quantity : Joi.number().integer().positive(),
-    delay_trip : Joi.boolean(),
-    reason : Joi.string(),
-    user_id_ : Joi.number().integer().positive(),
+    type_trip : Joi.string().required(),
+    boat : Joi.string().required(),
+    harbour : Joi.string().required(),
+    departure : Joi.string().regex(RegExp("/^([0-9]{2})\:([0-9]{2})$/")).required(),
+    arrival : Joi.string().regex(RegExp("/^([0-9]{2})\:([0-9]{2})$/")).required(),
+    day_trip : Joi.date().required(),
+    quantity : Joi.number().integer().positive().required(),
+    delay_trip : Joi.boolean().required(),
+    reason : Joi.string().required(),
+    user_id_ : Joi.number().integer().positive().required(),
     
 
-}).required().min(9);
+});
 
 
 module.exports = { schemaUser , schemaTrip };

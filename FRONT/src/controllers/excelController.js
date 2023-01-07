@@ -6,7 +6,7 @@ const excelController = {
     async exportData(req,res) {
         try{
             console.log(req.body)
-            const response = await fetch(`http://localhost:5000/api/trips/excel`, {
+            const response = await fetch(`PROCESS.ENV.URL/api/trips/excel`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
                 body: JSON.stringify(req.body),
@@ -14,6 +14,8 @@ const excelController = {
                     'Content-Type': 'application/json'
                   }
             });
+
+            
 
             if (!response.ok) throw new Error(response);
 
@@ -23,7 +25,8 @@ const excelController = {
             //Call excel workbook
 
             let workbook = new exceljs.Workbook()
-            const sheet = workbook.addWorksheet('data')
+            const worksheet = workbook.addWorksheet('data')
+            /*
             sheet.columns = [
                 {header: "id" , key: "id"},
                 {header: "type" , key: "type_trip"},
@@ -36,25 +39,13 @@ const excelController = {
                 {header: "retard" , key:"delay_trip"},
                 {header: "raison" , key:"reason"},
                 {header: "pilote" , key:"fname"}
-            ]
+            ] */
 
             //let object = JSON.parse(fs.readFileSync(trips,'utf8'))
 
-            trips.map((value) => {
-                sheet.addRow({
-                    id : value.id,
-                    type_trip : value.type_trip,
-                    boat : value.boat,
-                    harbour : value.harbour,
-                    departure : value.departure,
-                    arrival : value.arrival,
-                    day_trip : value.day_trip,
-                    quantity : value.quantity,
-                    delay_trip : value.delay_trip,
-                    reason : value.reason,
-                    fname : value.fname
-                })
-            })
+            trips.forEach(row => {
+                worksheet.addRow([row.id, row.type_trip, row.boat, row.harbour, row.departure, row.arrival, row.day_trip, row.quantity, row.delay_trip,row.reason, row.fname]);
+              });
 
             
             res.setHeader(
@@ -72,7 +63,7 @@ const excelController = {
         } catch(err) {
             console.log(err)
         }
-        res.redirect('/exports')
+        res.redirect('/export')
     }
 }
 

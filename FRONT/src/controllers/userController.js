@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 const userController = {
 async deleteUser(req,res) {
     try {
-        const response = await fetch(`http://localhost:5000/api/users/${req.params.id}`, {
+        const response = await fetch(`PROCESS.ENV.URL/api/users/${req.params.id}`, {
             method: 'DELETE',
         });
 

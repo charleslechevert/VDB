@@ -1,6 +1,6 @@
 <%- include("partials/setup") %>
 <%- include("partials/header") %>
-<script src="history.js" defer></script>
+
 
 <section class="triplist">
 <div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="tripline__subsubcontainer">
                     <div class="tripline__info-text tripline__info-text-background3" id="day_trip"><%= trip.day_trip %></div>
-                    <% if(trip.delay_trip) { %>
+                    <% if(!trip.delay_trip) { %>
                     <div class="tripline__info-text tripline__info-text-background4">À l'heure</div>
                     <% } else { %>
                     <div class="tripline__info-text tripline__info-text-background5">En retard</div>

@@ -19,7 +19,7 @@ CREATE TABLE "trip"
     harbour text NOT NULL,
     departure time(0) NOT NULL,
     arrival time(0),
-    day_trip timestamp without time zone NOT NULL,
+    day_trip date NOT NULL,
     quantity integer NOT NULL,
     delay_trip boolean NOT NULL,
     reason text,

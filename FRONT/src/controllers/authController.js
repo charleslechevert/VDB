@@ -15,17 +15,13 @@ const authController = {
         const {email, password} = req.body;
         let users;
         try {
-            const response = await fetch('http://localhost:5000/api/users');
+            const response = await fetch('PROCESS.ENV.URL/api/users');
              users = await response.json();
         } catch(err) {
             console.log(err)
         }
 
         const correctEmail = users.find(user => user.email == email)
-        const userID = correctEmail.id
-        const userFname = correctEmail.fname
-        const userLname = correctEmail.lname
-        const userEmail = correctEmail.email
 
         if(!correctEmail) {
             res.render('signin', {
@@ -42,16 +38,16 @@ const authController = {
         });
         return;
     }
-        req.session.userEmail = userEmail
-        req.session.userFname = userFname
-        req.session.userLname = userLname
-        req.session.userID = userID
+        req.session.userEmail = correctEmail.email
+        req.session.userFname = correctEmail.fname
+        req.session.userLname = correctEmail.lname
+        req.session.userID = correctEmail.id
 
 
         res.redirect('/');
     },
     async users(req,res) {
-        const response = await fetch('http://localhost:5000/api/users');
+        const response = await fetch('PROCESS.ENV.URL/api/users');
         users = await response.json();
         console.log(users)
         res.render('users', {users})
@@ -66,7 +62,7 @@ const authController = {
     
 
         try {
-            const response = await fetch('http://localhost:5000/api/users');
+            const response = await fetch('PROCESS.ENV.URL/api/users');
              users = await response.json();
         } catch(err) {
             console.log(err)
@@ -95,7 +91,7 @@ const authController = {
 
 
         try {
-            const userCreated = await fetch(`http://localhost:5000/api/users`, {
+            const userCreated = await fetch(`PROCESS.ENV.URL/api/users`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
                 body: JSON.stringify(req.body),
