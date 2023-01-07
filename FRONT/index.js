@@ -1,7 +1,16 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express');
-const app = express(); // on crèe une instance d'un server Express
+const session = require('express-session');
 const router = require('./src/router')
+
+const app = express(); // on crèe une instance d'un server Express
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+ }));
+ 
 
 app.use(express.urlencoded())
 app.use(express.json());
@@ -15,7 +24,7 @@ app.use(express.static("public"));
 
 app.use(router);
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 3002;
 
 app.listen(PORT, () => {
     console.log(`Serveur démarré : http://localhost:${PORT}`);

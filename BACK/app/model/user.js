@@ -19,8 +19,8 @@ const model = {
     async insert(user){
         let userDB;
         try{
-            const sqlQuery = "INSERT INTO public.user(fname, lname, email, password, companyrole) VALUES ($1, $2, $3, $4, $5) RETURNING *;";
-            const values = [user.fname,user.lname,user.email,user.companyrole];
+            const sqlQuery = "INSERT INTO public.user(fname, lname, email, password, admin) VALUES ($1, $2, $3, $4, $5) RETURNING *;";
+            const values = [user.fname,user.lname,user.email,user.password,user.admin];
             const result = await client.query(sqlQuery,values);
             userDB = result.rows[0];
         }

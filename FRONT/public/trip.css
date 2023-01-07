@@ -94,17 +94,14 @@
     margin-top: 2vh ;
 }
 
+
+
 .triplist {
     width: 90vw;
     max-width: 800px;
     background-color: white;
     border-radius: 8px;
     margin : 2vh auto;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
 
 
 }
@@ -136,10 +133,11 @@
 
 }
 .tripline__info-logo {
-    width: 7vw;
-    max-width: 40px;
-    height: 7vw;
-    max-height: 40px;
+    width: 5vw;
+    max-width: 30px;
+    height: 5vw;
+    max-height: 30px;
+    margin-right: 1vh;
     
     
 }
@@ -201,4 +199,10 @@
     }
   }
 
+.trip__errmsg {
+    text-transform: uppercase;
+    color: #881a14;
+    margin-top: 2vh;
+    font-weight: 900;
+}
 

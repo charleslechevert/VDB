@@ -1,11 +1,15 @@
 const fetch = require('node-fetch')
 const bcrypt = require('bcrypt');
-const validate = require('validate');
-const SignupConstraints = require('../services/dataConstraints')
+
 
 const authController = {
     signin(req,res){
-        res.render("signin")
+        if(!req.session.userID) {
+            res.render("signin")
+            return
+        } else {
+            res.redirect('/')
+        }   
     },
     async formSignin(req, res) {
         const {email, password} = req.body;
@@ -18,6 +22,10 @@ const authController = {
         }
 
         const correctEmail = users.find(user => user.email == email)
+        const userID = correctEmail.id
+        const userFname = correctEmail.fname
+        const userLname = correctEmail.lname
+        const userEmail = correctEmail.email
 
         if(!correctEmail) {
             res.render('signin', {
@@ -34,6 +42,11 @@ const authController = {
         });
         return;
     }
+        req.session.userEmail = userEmail
+        req.session.userFname = userFname
+        req.session.userLname = userLname
+        req.session.userID = userID
+
 
         res.redirect('/');
     },
@@ -66,11 +79,7 @@ const authController = {
             });
             return;
         }
-        console.log(req.body.password != req.body.paswword_conf)
-        console.log(req.body.password)
-        console.log(req.body.paswword_conf)
         if(req.body.password !== req.body.password_conf) {
-        console.log('ok')
         res.render('signup', {
             errorMessage: 'Mot de passe différent de la confirmation'
         });
@@ -84,6 +93,7 @@ const authController = {
         delete req.body.password_conf
         console.log(req.body)
 
+
         try {
             const userCreated = await fetch(`http://localhost:5000/api/users`, {
                 method: 'POST',
@@ -93,18 +103,23 @@ const authController = {
                     'Content-Type': 'application/json'
                   }
             });
-            
-            //req.session.userId = userCreated.id;
+            req.session.userEmail = req.body.email;
+            req.session.userFname = req.body.fname;
+            req.session.userLname = req.body.lname;
+            req.session.userID = req.body.id;
+
+            res.redirect('/users')
           } catch(e) {
             res.render('signup', {
               errorMessage: 'Veuillez vérifier les champs du formulaire'
             });
-            return;
           }
+    },
+    signout(req,res) {
+        req.session.destroy()
+        res.redirect('/signin')
 
-        res.redirect('/users')
     }
-
 }
 
 

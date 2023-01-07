@@ -56,22 +56,23 @@ const excelController = {
                 })
             })
 
+            
             res.setHeader(
-                 "Content-Type",
-                  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
-
-            res.setHeader(
-                "Content-Disposition",
-                 "attachment;filename=" + "books.xlsx"
+                "Content-Type",
+                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
            )
-
-           workbook.xlsx.write(res)
+        
+           res.setHeader(
+               "Content-Disposition",
+                "attachment;filename=" + "books.xlsx"
+          )
+              
+        workbook.xlsx.write(res)
         
         } catch(err) {
             console.log(err)
         }
-        res.redirect('/history')
+        res.redirect('/exports')
     }
 }
 

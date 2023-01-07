@@ -38,11 +38,9 @@
         <label class="tripform__label">Jour</label>
         <input type="date"  class="tripform__hours" name="day_trip" id="day_trip">
         <label class="tripform__label" value="14:30">Heure de départ</label>
-        <input class="tripform__hours" type="time" id="departure" name="departure"
-            min="06:00" max="23:00" required>
+        <input class="tripform__hours" type="time" id="departure" name="departure"required>
         <label class="tripform__label">Heure d'arrivée</label>
-        <input class="tripform__hours" type="time" id="arrival" name="arrival"
-            min="06:00" max="23:00">
+        <input class="tripform__hours" type="time" id="arrival" min="departure" name="arrival">
         <label class="tripform__label">Retard</label>
         <div>
             <label>
@@ -56,6 +54,9 @@
         </div>
         <label class="tripform__label">Raison du retard</label>
         <input class="tripform__input" name="reason">
+        <% if(locals.errMsg) { %>
+            <p class="trip__errmsg"><%=locals.errMsg%></p>
+        <% } %>
         <input class="tripform__validate" type="submit">
         
     </form>

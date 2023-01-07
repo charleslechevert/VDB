@@ -24,9 +24,22 @@ const controller = {
         try{
             data = req.body;
             data.user_id_ = 1
+
+            //we set up a default value when arrival input is not filled up (may change)
             if(!data.arrival) {
                 data.arrival = '00:00'
             }
+
+            //return errorMsg if arrival < departure
+            if(data.arrival != '00:00' && data.departure > data.arrival) {
+                res.render('trip', {errMsg: "L'heure de départ est supérieure à l'heure d'arrivée"})
+                return;
+            }
+
+
+
+            
+
             data.quantity = parseInt(data.quantity)
             const response = await fetch(`http://localhost:5000/api/trips`, {
                 method: 'POST',

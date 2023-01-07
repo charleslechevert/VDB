@@ -1,7 +1,16 @@
 <%- include("partials/setup") %>
 <%- include("partials/header") %>
+<script src="users.js" defer></script>
 
-
+<div class="user__modal-confirmation" id='modal' >
+        <p class="user__modal-text">êtes-vous sûr de vouloir continuer?</p>
+        <div class="user__answer-container">
+            <form  id="user__delete-form" method="post">
+                <input type="submit" class="user__answer" value="oui" id="user__yesdelete">
+            </form>
+            <p class="user__answer user__answer-no" id="user_nodelete">non</a>
+        </div>
+</div>
 <section class="user__container">
     <div class="user__add-button-container">
         <a class="user__add-button" href="/signup">Ajouter un utilisateur</a>
@@ -14,7 +23,7 @@
             <p class="user__delete"></p>
         </div>
         <% for(user of users) { %>
-        <div class="user__table-row">
+        <div class="user__table-row" >
             <p class="user__email"><%= user.email%></p>
             <% if(user.admin) { %>
                 <p class="user__role">OUI</p>
@@ -22,8 +31,8 @@
                 <p class="user__role">NON</p>
             <% } %>
             
-            <div class="user__delete">
-                <img class="user__tabl-img" src="delete.png" alt="">
+            <div class="user__delete" id="user_delete" data-id=<%=user.id%>>
+                <img class="user__tabl-img" src="delete.png"  alt="">
             </div>
             
         </div>

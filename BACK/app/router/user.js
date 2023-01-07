@@ -29,7 +29,7 @@ router.get("/",userController.getAllUsers);
  * @return {object} 200 - retourne la catégorie créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/"  , validationModule.validate(schemaUser,"body"), userController.addUser);
+router.post("/",userController.addUser);
 router.get("/:id",userController.getUser);
 router.patch("/:id",userController.modifyUser);
 router.delete("/:id",userController.deleteUser);

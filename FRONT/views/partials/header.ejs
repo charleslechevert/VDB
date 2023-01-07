@@ -2,5 +2,7 @@
     <a href="/">
         <img src="/logo.png" class="navbar__logo" alt="">
     </a>
-    <div class="navbar__logout">Se déconnecter</div>
+    <form method="post" action="/signout" >
+        <input value="Se déconnecter" type="submit" class="navbar__logout">
+    </form>
 </header>

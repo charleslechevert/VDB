@@ -11,8 +11,13 @@ content-type: application/json
     "fname": "Mario",
     "lname": "Broz",
     "email": "marios@vdb.fr",
-    "companyrole": "sailor"
+    "password": "cdcvfvffvfv",
+    "admin": "false"
 }
+
+
+
+
 ### Récupère une user Ok
 
 GET http://process.ENV.URL/api/users/3
