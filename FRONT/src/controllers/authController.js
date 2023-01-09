@@ -12,13 +12,17 @@ const authController = {
         }   
     },
     async formSignin(req, res) {
-        const {email, password} = req.body;
+        let {email, password} = req.body;
+
+        //put everything in lower case
+        email = email.toLowerCase()
+
         let users;
         try {
-            const response = await fetch('PROCESS.ENV.URL/api/users');
+            const response = await fetch('http://localhost:5000/api/users');
              users = await response.json();
         } catch(err) {
-            console.log(err)
+            res.send('Une erreur est survenue, veuillez réesayer ultérieurement');
         }
 
         const correctEmail = users.find(user => user.email == email)
@@ -47,7 +51,7 @@ const authController = {
         res.redirect('/');
     },
     async users(req,res) {
-        const response = await fetch('PROCESS.ENV.URL/api/users');
+        const response = await fetch('http://localhost:5000/api/users');
         users = await response.json();
         console.log(users)
         res.render('users', {users})
@@ -59,13 +63,17 @@ const authController = {
     async formSignup(req,res) {
         let users;
 
-    
+        //put everything in lowercase for email and uppercase for f/lname
+        req.body.email = req.body.email.toLowerCase()
+        req.body.fname = req.body.fname.toUpperCase()
+        req.body.lname = req.body.lname.toUpperCase()
+
 
         try {
-            const response = await fetch('PROCESS.ENV.URL/api/users');
+            const response = await fetch('http://localhost:5000/api/users');
              users = await response.json();
         } catch(err) {
-            console.log(err)
+            res.send('Une erreur est survenue, veuillez réesayer ultérieurement')
         }
 
         const emailFound = users.find(user => user.email == req.body.email)
@@ -85,13 +93,12 @@ const authController = {
         //hash the password
         const passwordHashed = await bcrypt.hash(req.body.password, 10);
         req.body.password = passwordHashed;
-
+        
         delete req.body.password_conf
-        console.log(req.body)
 
 
         try {
-            const userCreated = await fetch(`PROCESS.ENV.URL/api/users`, {
+            const userCreated = await fetch(`http://localhost:5000/api/users`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
                 body: JSON.stringify(req.body),

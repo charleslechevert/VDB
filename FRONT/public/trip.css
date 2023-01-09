@@ -92,6 +92,22 @@
     border-radius: 8px;
     text-transform: uppercase;
     margin-top: 2vh ;
+
+}
+
+.tripform__input-delete {
+    background-color: rgb(99, 18, 18);
+    font-size: 3vh;
+    font-weight: 800;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    padding: 1.2vh;
+    padding-top : 1.7vh;
+    border-radius: 8px;
+    text-transform: uppercase;
+    margin-top: 2vh ;
+    height: 6.3vh;
 }
 
 
@@ -212,4 +228,12 @@
 
 #tripform_reasonInput {
     display: none;   
+}
+
+.tripform__modify-validate--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 }

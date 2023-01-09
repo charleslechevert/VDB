@@ -24,7 +24,10 @@ CREATE TABLE "trip"
     delay_trip boolean NOT NULL,
     reason text,
     user_id_ integer NOT NULL REFERENCES "user"(id),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    CHECK (arrival > departure),
+    CHECK (delay_trip OR reason IS NULL)
+
 );
 
 

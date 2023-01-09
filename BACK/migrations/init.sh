@@ -1,6 +1,6 @@
 # 0. Je prends l'identité de spedata
 
-export PGUSER=spedata
+export PGUSER=postgres
 
 # 1.initialisation de la BDD
 

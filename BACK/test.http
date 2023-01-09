@@ -80,15 +80,15 @@ PATCH http://localhost:5000/api/trips/2
 content-type: application/json
 
 {
-    "type_trip": "navette",
-    "boat": "Bréhatine",
-    "harbour": "Acouest",
-    "departure": "17:40",
-    "arrival": "19:40",
-    "day_trip": "13/07/22",
+    "type_trip": "DIRECT",
+    "boat": "BRÉHATINE",
+    "harbour": "ARCOUEST",
+    "departure": "15:35",
+    "arrival": null,
+    "day_trip": "2023-01-09",
     "quantity": 59,
-    "delay_trip": true,
-    "reason": "blabla",
+    "delay_trip": "true",
+    "reason": "",
     "user_id_": 2
 }
 

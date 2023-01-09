@@ -10,28 +10,29 @@
     <form class="tripform__form" method="post">
         <label class="tripform__label">Bateau</label> 
         <select name="boat" id="boat" data-boat="<%=trip.boat%>" class="tripform__select">
-            <option class="tripform__option" value="Bréhatine">Bréhatine</option>
-            <option class="tripform__option" value="Enez">Enez</option>
-            <option class="tripform__option" value="Kerpont">Kerpont</option>
-            <option class="tripform__option" value="Cupidon">Cupidon</option>
-            <option class="tripform__option" value="Kehops">Kehops</option>
+            <option class="tripform__option" value="BRÉHATINE">Bréhatine</option>
+            <option class="tripform__option" value="ENEZ VRIAD">Enez Vriad</option>
+            <option class="tripform__option" value="ENEZIZ">Eneziz</option>
+            <option class="tripform__option" value="KEPHRENN">Kephrenn</option>
+            <option class="tripform__option" value="KEHOPS">Kehops</option>
         </select>
         <label class="tripform__label">Type de traversée</label>
         <select name="type_trip" id="type_trip" data-type_trip="<%=trip.type_trip%>" class="tripform__select">
-            <option class="tripform__option" value="Directe">Directe</option>
-            <option class="tripform__option" value="Tour">Tour de l'île</option>
-            <option class="tripform__option" value="Extérieur">Extérieur</option>
-            <option class="tripform__option" value="Affrêtement">Affrêtement</option>
+            <option class="tripform__option" value="DIRECTE">Directe</option>
+            <option class="tripform__option" value="TOUR">Tour de l'île</option>
+            <option class="tripform__option" value="EXTÉRIEUR">Extérieur</option>
+            <option class="tripform__option" value="AFFRÊTEMENT">Affrêtement</option>
         </select>
         <label class="tripform__label">Port</label>
         <select name="harbour" id="harbour" data-harbour="<%=trip.harbour%>" class="tripform__select">
-            <option class="tripform__option" value="Arcouest">Arcouest</option>
-            <option class="tripform__option" value="Bréhat">Bréhat</option>
-            <option class="tripform__option" value="Scolaire">Scolaire</option>
-            <option class="tripform__option" value="Tour">Tour</option>
-            <option class="tripform__option" value="Erquy">Erquy</option>
-            <option class="tripform__option" value="Saint Quay">Saint Quay</option>
-            <option class="tripform__option" value="Saint Quay-Binic">Saint Quay-Binic</option>
+            <option class="tripform__option" value="ARCOUEST">Arcouest</option>
+            <option class="tripform__option" value="BRÉHAT">Bréhat</option>
+            <option class="tripform__option" value="ERQUY">Erquy</option>
+            <option class="tripform__option" value="SAINT QUAY">Saint Quay</option>
+            <option class="tripform__option" value="SAINT QUAY-BINIC">Saint Quay-Binic</option>
+            <option class="tripform__option" value="TRIEUX">Trieux</option>
+            <option class="tripform__option" value="PARC ÉOLIEN">Parc Éolien</option>
+            <option class="tripform__option" value="ROUEN">Rouen</option>
         </select>
         <label class="tripform__label">Nombre de passagers</label>
         <input type ="number" name="quantity" class="tripform__input--passenger" value="<%=trip.quantity%>" required>
@@ -64,9 +65,25 @@
         </div>
         <label class="tripform__label">Raison du retard</label>
         <input class="tripform__input" name="reason" value="<%=trip.reason%>">
-        <input class="tripform__validate" type="submit">
-        
+        <% if(locals.errMsg) { %>
+            <p class="trip__errmsg"><%=locals.errMsg%></p>
+        <% } %>
+        <div class="tripform__modify-validate--container">
+            <input class="tripform__validate" type="submit">
+            <p class="tripform__input-delete" id="delete_trip" trip-id=<%=trip.id%>>Supprimer</p>
+        </div>
     </form>
+
+    <div class="user__modal-confirmation" id="modal_trip" >
+        <p class="user__modal-text">êtes-vous sûr de vouloir continuer?</p>
+        <div class="user__answer-container">
+            <form  id="user__delete-form" method="post">
+                <input type="submit" class="user__answer" value="oui" id="user__yesdelete">
+            </form>
+            <p class="user__answer user__answer-no" id="user_nodelete">non</p>
+        </div>
+    </div>
+
 </section>
 
         </main>

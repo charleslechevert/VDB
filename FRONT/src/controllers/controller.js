@@ -1,111 +1,36 @@
 const fetch = require('node-fetch')
 const moment = require('moment')
+const _ = require('lodash');
+
 
 const controller = {
 
     home(req,res){
         res.render("home")
     },
-    trip(req,res){
-        res.render("trip")
-    },
-    export(req,res){
-        res.render("export")
-    },
     async history(req,res){
         try {
-        const response = await fetch('PROCESS.ENV.URL/api/trips/with-sailor')
-        const trips = await response.json()
+        const response = await fetch('http://localhost:5000/api/trips/with-sailor')
+        let trips = await response.json()
+
+
+
+        //Render data by date and time in descending order
+        trips = _.orderBy(trips, [item => new Date(item.day_trip), item => item.departure], ['desc','desc']);
 
         for(trip of trips) {
             trip.day_trip =moment(trip.day_trip).format("DD-MM-YYYY")
         }
 
+        //filter by date
+        //trips = trips.filter(trip => trip.day_trip == '09-01-2023')
+        
+        
         res.render("history", { trips })
+
         } catch(error) {
-            console.error(error);
+            console.log(error)
         }
-    },
-    async addTrip(req,res) {
-        try{
-            data = req.body;
-            data.user_id_ = req.session.userID
-
-            //we set up a default value when arrival input is not filled up (may change)
-            if(!data.arrival) {
-                data.arrival = '00:00'
-            }
-
-            //return errorMsg if arrival < departure
-            if(data.arrival != '00:00' && data.departure > data.arrival) {
-                res.render('trip', {errMsg: "L'heure de départ est supérieure à l'heure d'arrivée"})
-                return;
-            }
-
-
-
-            
-
-            data.quantity = parseInt(data.quantity)
-            const response = await fetch(`PROCESS.ENV.URL/api/trips`, {
-                method: 'POST',
-                // on passe les données du formulaire en body du POST
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                  }
-            });
-
-            if (!response.ok) throw new Error(response);
-
-            const createdCard = await response.json()
-        
-        } catch(err) {
-            console.log(err)
-        }
-        res.redirect('/history')
-    },
-    async renderModifyTrip(req,res) {
-        try {
-            const response = await fetch(`PROCESS.ENV.URL/api/trips/${req.params.id}`)
-            let trip = await response.json()
-
-            //transform date format
-
-            trip.day_trip =moment(trip.day_trip).format("YYYY-MM-DD")
-
-            res.render("modifytrip", { trip })
-            } catch(error) {
-                console.error(error);
-            }
-    },
-    async sendModifyTrip(req,res) {
-        try{
-            data = req.body;
-            data.user_id_ = 1
-            if(!data.arrival) {
-                data.arrival = '00:00'
-            }
-            data.quantity = parseInt(data.quantity)
-            console.log(data)
-            const response = await fetch(`PROCESS.ENV.URL/api/trips/${req.params.id}`, {
-                method: 'PATCH',
-                // on passe les données du formulaire en body du POST
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                  }
-            });
-
-            if (!response.ok) throw new Error(response);
-
-            const createdCard = await response.json()
-        
-        } catch(err) {
-            console.log(err)
-        }
-        res.redirect('/history')
-
     }
 
 };

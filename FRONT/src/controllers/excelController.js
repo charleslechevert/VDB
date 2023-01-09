@@ -1,12 +1,15 @@
 const fetch = require('node-fetch')
 const fs = require("fs")
 const exceljs = require("exceljs")
+const moment = require('moment')
 
 const excelController = {
+    export(req,res){
+        res.render("export")
+    },
     async exportData(req,res) {
         try{
-            console.log(req.body)
-            const response = await fetch(`PROCESS.ENV.URL/api/trips/excel`, {
+            const response = await fetch(`http://localhost:5000/api/trips/excel`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
                 body: JSON.stringify(req.body),
@@ -20,10 +23,9 @@ const excelController = {
             if (!response.ok) throw new Error(response);
 
             const trips = await response.json()
-            console.log(trips)
+            trips.day_trip = moment(trips.day_trip).format("DD-MM-YYYY")
 
             //Call excel workbook
-
             let workbook = new exceljs.Workbook()
             const worksheet = workbook.addWorksheet('data')
             /*
@@ -61,7 +63,7 @@ const excelController = {
         workbook.xlsx.write(res)
         
         } catch(err) {
-            console.log(err)
+            res.send('Une erreur est survenue. Veuillez réesayer plus tard!')
         }
         res.redirect('/export')
     }

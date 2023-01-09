@@ -43,7 +43,12 @@
 
                 </div>
                 
-                <div class="tripline__hours"><%= trip.departure.slice(0,5) %> - <%= trip.arrival.slice(0,5) %></div>
+                <% if(trip.arrival) { %>
+                    <div class="tripline__hours"><%= trip.departure.slice(0,5) %> - <%= trip.arrival.slice(0,5) %></div>
+                <% } else { %>
+                    <div class="tripline__hours"><%= trip.departure.slice(0,5) %> - ???</div>
+   
+                <% } %>
 
             </div>
         </a>
