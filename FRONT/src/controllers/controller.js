@@ -6,7 +6,10 @@ const _ = require('lodash');
 const controller = {
 
     home(req,res){
-        res.render("home")
+
+        const admin = req.session.admin
+
+        res.render("home", { admin })
     },
     async history(req,res){
         try {
@@ -19,14 +22,23 @@ const controller = {
         trips = _.orderBy(trips, [item => new Date(item.day_trip), item => item.departure], ['desc','desc']);
 
         for(trip of trips) {
-            trip.day_trip =moment(trip.day_trip).format("DD-MM-YYYY")
+            trip.day_trip =moment(trip.day_trip).format("DD/MM/YYYY")
         }
 
-        //filter by date
-        //trips = trips.filter(trip => trip.day_trip == '09-01-2023')
+        //Render data for the correct date
+        
+        const todayDate = moment(new Date().toISOString().substring(0, 10)).format("DD/MM/YYYY");
+        if(!req.body.day_selected) {
+            trips = trips.filter(item => item.day_trip == todayDate)
+        } else  {
+            const dateSelected = moment(req.body.day_selected).format("DD/MM/YYYY");
+            trips = trips.filter(trip => trip.day_trip == dateSelected ) 
+        }
+        
+        const admin = req.session.admin
         
         
-        res.render("history", { trips })
+        res.render("history", { trips, admin })
 
         } catch(error) {
             console.log(error)

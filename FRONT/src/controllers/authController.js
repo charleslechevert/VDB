@@ -12,10 +12,10 @@ const authController = {
         }   
     },
     async formSignin(req, res) {
-        let {email, password} = req.body;
+        let {pseudo, password} = req.body;
 
         //put everything in lower case
-        email = email.toLowerCase()
+        pseudo = pseudo.toUpperCase()
 
         let users;
         try {
@@ -25,16 +25,16 @@ const authController = {
             res.send('Une erreur est survenue, veuillez réesayer ultérieurement');
         }
 
-        const correctEmail = users.find(user => user.email == email)
+        const correctPseudo = users.find(user => user.pseudo == pseudo)
 
-        if(!correctEmail) {
+        if(!correctPseudo) {
             res.render('signin', {
                 errorMessage: 'Mauvais identifiant'
             });
             return;
         }
 
-        const hasPasswordMatched = await bcrypt.compare(password, correctEmail.password);
+        const hasPasswordMatched = await bcrypt.compare(password, correctPseudo.password);
 
         if(!hasPasswordMatched) {
         res.render('signin', {
@@ -42,11 +42,11 @@ const authController = {
         });
         return;
     }
-        req.session.userEmail = correctEmail.email
-        req.session.userFname = correctEmail.fname
-        req.session.userLname = correctEmail.lname
-        req.session.userID = correctEmail.id
-
+        req.session.userPseudo = correctPseudo.pseudo
+        req.session.userFname = correctPseudo.fname
+        req.session.userLname = correctPseudo.lname
+        req.session.userID = correctPseudo.id
+        req.session.admin = correctPseudo.admin
 
         res.redirect('/');
     },
@@ -63,8 +63,8 @@ const authController = {
     async formSignup(req,res) {
         let users;
 
-        //put everything in lowercase for email and uppercase for f/lname
-        req.body.email = req.body.email.toLowerCase()
+        //put everything in lowercase for pseudo and uppercase for f/lname
+        req.body.pseudo = req.body.pseudo.toUpperCase()
         req.body.fname = req.body.fname.toUpperCase()
         req.body.lname = req.body.lname.toUpperCase()
 
@@ -76,8 +76,8 @@ const authController = {
             res.send('Une erreur est survenue, veuillez réesayer ultérieurement')
         }
 
-        const emailFound = users.find(user => user.email == req.body.email)
-        if(emailFound) {
+        const pseudoFound = users.find(user => user.pseudo == req.body.pseudo)
+        if(pseudoFound) {
             res.render('signup', {
               errorMessage: 'Un compte existe déjà, veuillez vous connecter'
             });
@@ -106,10 +106,11 @@ const authController = {
                     'Content-Type': 'application/json'
                   }
             });
-            req.session.userEmail = req.body.email;
+            req.session.userPseudo = req.body.pseudo;
             req.session.userFname = req.body.fname;
             req.session.userLname = req.body.lname;
             req.session.userID = req.body.id;
+            req.session.admin = req.body.admin;
 
             res.redirect('/users')
           } catch(e) {

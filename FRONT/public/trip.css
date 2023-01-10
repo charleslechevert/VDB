@@ -167,30 +167,30 @@
 
 }
 
-.tripline__info-text-background1 {
-    background-color: #FFDCAE;
+.tripline__info-text-background-direct {
+    background-color: #fce47c;
     border-radius: 7px;
 }
 
-.tripline__info-text-background2 {
-    background-color: #CED89E;
+.tripline__info-text-background-tour {
+    background-color: #ff7f44;
+    border-radius: 7px;
+}
+
+.tripline__info-text-background {
+    background-color: #4e4d62;
     color:white;
     border-radius: 7px;
 }
 
-.tripline__info-text-background3 {
-    background-color: #ADCF9F;
-    border-radius: 7px;
-    color:white;
-}
 
-.tripline__info-text-background4 {
+.tripline__info-text-background-ontime {
     background-color: #76BA99;
     border-radius: 7px;
     color:white;
 }
 
-.tripline__info-text-background5 {
+.tripline__info-text-background-delay {
     background-color: #7a120d;
     border-radius: 7px;
     color:white;
@@ -236,4 +236,29 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+}
+
+.tripform__date-fixed {
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color:#4e4d62;
+    border-radius: 8px;
+    box-shadow: 3px 3px gray;
+    color: white;
+    padding: 1vh;
+}
+
+.history__date-input {
+    border-radius: 20px;
+    height: 4vh;
+    margin: 1.8vh;
+    margin-left: 70%;
+
+}
+
+.history__date-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }

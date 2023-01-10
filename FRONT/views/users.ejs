@@ -18,13 +18,13 @@
 
     <div class="user__table">
         <div class="user__table-row user__header">
-            <p class="user__email">EMAIL</p>
+            <p class="user__pseudo">PSEUDO</p>
             <p class="user__role">ADMIN?</p>
             <p class="user__delete"></p>
         </div>
         <% for(user of users) { %>
         <div class="user__table-row" >
-            <p class="user__email"><%= user.email%></p>
+            <p class="user__pseudo"><%= user.pseudo%></p>
             <% if(user.admin) { %>
                 <p class="user__role">OUI</p>
             <% } else { %>

@@ -4,7 +4,10 @@ const serviceFunction = require('../services/function')
 
 const tripController = {
     trip(req,res){
-        res.render("trip")
+        const admin = req.session.admin
+        const todayDate = new Date().toISOString().substring(0, 10);
+        const todayDate_formatted = moment(todayDate).format("DD/MM/YYYY");
+        res.render("trip", {admin, todayDate, todayDate_formatted})
     },
     async deleteTrip(req,res) {
         try {
@@ -24,27 +27,21 @@ const tripController = {
             data = req.body;
             data.user_id_ = req.session.userID
 
-            //we set up anull value when arrival input is not filled up (may change)
-            if(!data.arrival) {
-                data.arrival = null
+            if(!req.body.day_trip) {
+                data.day_trip = new Date().toISOString().substring(0, 10)
             }
+
+
 
             //we set up anull value to reason if delay_trip is falsy
             if(data.delay_trip == 'false') {
                 data.reason = null
             }
 
-            //we transform departure and arrival to %5 value
+            //we transform departure to %5 value
             data.departure = serviceFunction.timeModulo5(data.departure)
-            if(data.arrival) {
-                data.arrival = serviceFunction.timeModulo5(data.arrival)
-            }
 
-            //return errorMsg if arrival < departure
-            if(data.arrival != null && data.departure > data.arrival) {
-                res.render('trip', {errMsg: "L'heure de départ est supérieure à l'heure d'arrivée"})
-                return;
-            }
+
 
             data.quantity = parseInt(data.quantity)
             const response = await fetch(`http://localhost:5000/api/trips`, {
@@ -72,9 +69,12 @@ const tripController = {
 
             //transform date format
 
-            trip.day_trip =moment(trip.day_trip).format("YYYY-MM-DD")
+            const admin = req.session.admin
+            trip.day_trip = moment(trip.day_trip).format("YYYY-MM-DD");
+            const todayDate = new Date().toISOString().substring(0, 10);
+            const todayDate_formatted = moment(todayDate).format("DD/MM/YYYY");
 
-            res.render("modifytrip", { trip })
+            res.render("modifytrip", { trip, admin, todayDate, todayDate_formatted })
             } catch(error) {
                 res.send('Une erreur est survenue, veuillez réesayer ultérieurement');
             }
@@ -83,28 +83,18 @@ const tripController = {
         try{
             data = req.body;
             req.body.user_id_ = req.session.userID
-            if(!data.arrival) {
-                data.arrival = null
+
+            if(!req.body.day_trip) {
+                data.day_trip = new Date().toISOString().substring(0, 10)
             }
+
             //we set up anull value to reason if delay_trip is falsy
             if(data.delay_trip == 'false') {
                 data.reason = null
             }
 
-            //we transform departure and arrival to %5 value
+            //we transform departure to %5 value
             data.departure = serviceFunction.timeModulo5(data.departure)
-            if(data.arrival) {
-                data.arrival = serviceFunction.timeModulo5(data.arrival)
-            }
-
-            //return errorMsg if arrival < departure
-            if(data.arrival != null && data.departure > data.arrival) {
-                trip.day_trip = `${trip.day_trip.substring(6,10)}-${trip.day_trip.substring(3,5)}-${trip.day_trip.substring(0,2)}` 
-                res.render('modifytrip', {trip, errMsg: "L'heure de départ est supérieure à l'heure d'arrivée"})
-                return;
-            }
-
-
 
 
             data.quantity = parseInt(data.quantity)

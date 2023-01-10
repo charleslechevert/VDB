@@ -7,6 +7,12 @@
     <div class="tripform__title--container">
         <h2 class="tripform__title">Historique</h2>
     </div>
+    <% if(admin) { %>
+    <form class="history__date-input-container" method="post">
+        <input class="history__date-input" type="date" id="day_selected" name="day_selected">
+        <input type="submit" value="OK">
+    </form>
+    <%  } %>
     <div>
         <% for (trip of trips) { %>
         <!-- START TRIP LINEE-->
@@ -30,26 +36,26 @@
 
             <div class="tripline__subcontainer2">
                 <div class="tripline__subsubcontainer">
-                    <div class="tripline__info-text tripline__info-text-background1"><%= trip.type_trip %></div>
-                    <div class="tripline__info-text tripline__info-text-background2"><%= trip.harbour %></div>
+                    <% if(trip.type_trip == 'TOUR') { %>
+                        <div class="tripline__info-text tripline__info-text-background-tour"><%= trip.type_trip %></div>
+                    <% } else if(trip.type_trip == 'DIRECTE') { %>
+                        <div class="tripline__info-text tripline__info-text-background-direct"><%= trip.type_trip %></div>
+                    <% } else { %>
+                        <div class="tripline__info-text tripline__info-text-background"><%= trip.type_trip %></div>
+                    <% } %>
+
+                    <div class="tripline__info-text tripline__info-text-background"><%= trip.harbour %></div>
                 </div>
                 <div class="tripline__subsubcontainer">
-                    <div class="tripline__info-text tripline__info-text-background3" id="day_trip"><%= trip.day_trip %></div>
+                    <div class="tripline__info-text tripline__info-text-background" id="day_trip"><%= trip.day_trip %></div>
                     <% if(!trip.delay_trip) { %>
-                    <div class="tripline__info-text tripline__info-text-background4">À l'heure</div>
+                    <div class="tripline__info-text tripline__info-text-background-ontime">À l'heure</div>
                     <% } else { %>
-                    <div class="tripline__info-text tripline__info-text-background5">En retard</div>
+                    <div class="tripline__info-text tripline__info-text-background-delay">En retard</div>
                     <% } %>
 
                 </div>
-                
-                <% if(trip.arrival) { %>
-                    <div class="tripline__hours"><%= trip.departure.slice(0,5) %> - <%= trip.arrival.slice(0,5) %></div>
-                <% } else { %>
-                    <div class="tripline__hours"><%= trip.departure.slice(0,5) %> - ???</div>
-   
-                <% } %>
-
+                    <div class="tripline__hours"><%= trip.departure.slice(0,5) %></div>
             </div>
         </a>
             <!-- END TRIP LINEE-->

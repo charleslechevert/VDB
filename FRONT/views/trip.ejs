@@ -8,6 +8,12 @@
     </div>
     
     <form class="tripform__form" method="post">
+        <label class="tripform__label">Jour</label>
+        <% if (admin) { %>
+        <input type="date" class="tripform__hours" value="<%=todayDate%>" max="<%=todayDate%>" name="day_trip" id="day_trip">
+        <% } else { %>
+            <p id="day_trip-fixed" class="tripform__date-fixed"> <%=todayDate_formatted%> </p>
+            <% } %>
         <label class="tripform__label">Bateau</label> 
         <select name="boat" id="boat" class="tripform__select">
             <option class="tripform__option" value="Bréhatine">Bréhatine</option>
@@ -37,12 +43,8 @@
         </select>
         <label class="tripform__label">Nombre de passagers</label>
         <input type ="number" name="quantity" class="tripform__input--passenger" required>
-        <label class="tripform__label">Jour</label>
-        <input type="date"  class="tripform__hours" name="day_trip" id="day_trip">
         <label class="tripform__label" value="14:30">Heure de départ</label>
         <input class="tripform__hours" type="time" id="departure" name="departure"required>
-        <label class="tripform__label">Heure d'arrivée</label>
-        <input class="tripform__hours" type="time" id="arrival" min="departure" name="arrival">
         <label class="tripform__label">Retard</label>
         <div>
             <label>
@@ -56,9 +58,6 @@
         </div>
         <label id="tripform_reasonLabel" class="tripform__label">Raison du retard</label>
         <input id="tripform_reasonInput" class="tripform__input" name="reason">
-        <% if(locals.errMsg) { %>
-            <p class="trip__errmsg"><%=locals.errMsg%></p>
-        <% } %>
         <input class="tripform__validate" type="submit">
         
     </form>

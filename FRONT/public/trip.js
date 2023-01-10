@@ -1,5 +1,5 @@
-//Get today date
-document.getElementById('day_trip').value = new Date().toISOString().substring(0, 10);
+
+
 
  //pre-fill the current time
  const currentTime = new Date()

@@ -8,6 +8,12 @@
     </div>
     
     <form class="tripform__form" method="post">
+        <label class="tripform__label">Jour</label>
+        <% if (admin) { %>
+        <input type="date"  class="tripform__hours" value="<%=trip.day_trip%>" max="<%=todayDate%>" name="day_trip" id="day_trip">
+        <% } else { %>
+        <p id="day_trip-fixed"class="tripform__date-fixed"> <%=todayDate_formatted%> </p>
+        <% } %>
         <label class="tripform__label">Bateau</label> 
         <select name="boat" id="boat" data-boat="<%=trip.boat%>" class="tripform__select">
             <option class="tripform__option" value="BRÉHATINE">Bréhatine</option>
@@ -36,14 +42,10 @@
         </select>
         <label class="tripform__label">Nombre de passagers</label>
         <input type ="number" name="quantity" class="tripform__input--passenger" value="<%=trip.quantity%>" required>
-        <label class="tripform__label">Jour</label>
-        <input type="date"  class="tripform__hours" value="<%=trip.day_trip%>" name="day_trip" id="day_trip">
         <label class="tripform__label" value="14:30">Heure de départ</label>
         <input class="tripform__hours" type="time" id="departure" value="<%=trip.departure%>" name="departure"
             min="06:00" max="23:00" required>
-        <label class="tripform__label">Heure d'arrivée</label>
-        <input class="tripform__hours" type="time" id="arrival" value="<%=trip.arrival%>" name="arrival"
-            min="06:00" max="23:00">
+
         <label class="tripform__label">Retard</label>
         <div>
             <label>

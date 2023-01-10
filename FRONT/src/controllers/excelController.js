@@ -23,11 +23,14 @@ const excelController = {
             if (!response.ok) throw new Error(response);
 
             const trips = await response.json()
-            trips.day_trip = moment(trips.day_trip).format("DD-MM-YYYY")
+            for(trip of trips) {
+                trip.day_trip = moment(trip.day_trip).format("DD-MM-YYYY")
+            }
+            console.log(trips)
 
             //Call excel workbook
             let workbook = new exceljs.Workbook()
-            const worksheet = workbook.addWorksheet('data')
+            const worksheet = workbook.addWorksheet('raw data')
             /*
             sheet.columns = [
                 {header: "id" , key: "id"},
@@ -35,7 +38,6 @@ const excelController = {
                 {header: "bateau" , key: "boat"},
                 {header: "port" , key: "harbour"},
                 {header: "heure_départ" , key: "departure"},
-                {header: "heure_arrivée" , key:"arrival"},
                 {header: "jour" , key:"day_trip"},
                 {header: "nb_passagers" , key:"quantity"},
                 {header: "retard" , key:"delay_trip"},
@@ -46,7 +48,7 @@ const excelController = {
             //let object = JSON.parse(fs.readFileSync(trips,'utf8'))
 
             trips.forEach(row => {
-                worksheet.addRow([row.id, row.type_trip, row.boat, row.harbour, row.departure, row.arrival, row.day_trip, row.quantity, row.delay_trip,row.reason, row.fname]);
+                worksheet.addRow([row.id, row.type_trip, row.boat, row.harbour, row.departure, row.day_trip, row.quantity, row.delay_trip,row.reason, row.fname]);
               });
 
             

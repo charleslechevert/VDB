@@ -8,6 +8,15 @@
       // Si il est connecter je le laisse faire l'action
       next();
     }
+  },
+  checkIsAdmin(req, res, next) {
+    // Si mon utilisateur n'est pas connecter, je le redirige sur la page de login
+    if(!req.session.admin) {
+      res.redirect('/signin');
+    } else {
+      // Si il est connecter je le laisse faire l'action
+      next();
+    }
   }
 }
 

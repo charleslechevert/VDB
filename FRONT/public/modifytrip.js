@@ -12,3 +12,6 @@ modal = document.querySelector('#user_nodelete')
 modal.addEventListener('click', () => {
     document.querySelector('#modal_trip').style.display = 'none'
 })
+
+//Make not possible to post a future date
+document.getElementById('day_trip').max = new Date().toISOString().substring(0, 10);

@@ -8,19 +8,12 @@ const excelController = require('./controllers/excelController');
 const authMiddleware = require('./services/auth');
 const { appendFile } = require('fs');
 
-
+//PUBLIC ROUTES
 router.get("/signin",authController.signin);
 router.post("/signin",authController.formSignin);
 
-router.get("/signup",authMiddleware.checkIsLogged, authController.renderSignupPage);
-router.post("/signup",authMiddleware.checkIsLogged, authController.formSignup);
-
+//USER ROUTES
 router.post("/signout",authMiddleware.checkIsLogged, authController.signout);
-
-router.get("/users",authMiddleware.checkIsLogged,authController.users);
-router.post("/delete/user/:id",authMiddleware.checkIsLogged,userController.deleteUser);
-
-
 
 router.get("/",authMiddleware.checkIsLogged,controller.home);
 
@@ -32,9 +25,18 @@ router.get("/modifytrip/:id",authMiddleware.checkIsLogged,tripController.renderM
 router.post("/modifytrip/:id",authMiddleware.checkIsLogged,tripController.sendModifyTrip)
 
 router.get("/history",authMiddleware.checkIsLogged,controller.history);
+router.post("/history",authMiddleware.checkIsLogged,controller.history);
 
-router.get("/export",authMiddleware.checkIsLogged,excelController.export);
-router.post("/export",authMiddleware.checkIsLogged,excelController.exportData);
+router.get("/export",authMiddleware.checkIsAdmin,excelController.export);
+router.post("/export",authMiddleware.checkIsAdmin,excelController.exportData);
+
+
+//ADMIN ROUTES
+router.get("/signup",authMiddleware.checkIsAdmin, authController.renderSignupPage);
+router.post("/signup",authMiddleware.checkIsAdmin, authController.formSignup);
+
+router.get("/users",authMiddleware.checkIsAdmin,authController.users);
+router.post("/delete/user/:id",authMiddleware.checkIsAdmin,userController.deleteUser);
 
 
 
