@@ -9,6 +9,7 @@ const excelController = {
     },
     async exportData(req,res) {
         try{
+            console.log(req.body)
             const response = await fetch(`http://localhost:5000/api/trips/excel`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
@@ -30,9 +31,9 @@ const excelController = {
 
             //Call excel workbook
             let workbook = new exceljs.Workbook()
-            const worksheet = workbook.addWorksheet('raw data')
-            /*
-            sheet.columns = [
+            const worksheet = workbook.addWorksheet('Raw Data')
+            
+            worksheet.columns = [
                 {header: "id" , key: "id"},
                 {header: "type" , key: "type_trip"},
                 {header: "bateau" , key: "boat"},
@@ -43,7 +44,7 @@ const excelController = {
                 {header: "retard" , key:"delay_trip"},
                 {header: "raison" , key:"reason"},
                 {header: "pilote" , key:"fname"}
-            ] */
+            ] 
 
             //let object = JSON.parse(fs.readFileSync(trips,'utf8'))
 
