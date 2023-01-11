@@ -10,7 +10,7 @@ content-type: application/json
 {
     "fname": "Mario",
     "lname": "Broz",
-    "email": "marios@vdb.fr",
+    "pseudo": "marios@vdb.fr",
     "password": "cdcvfvffvfv",
     "admin": "false"
 }
@@ -32,7 +32,7 @@ content-type: application/json
 {
     "fname": "Didier",
     "lname": "Dupré",
-    "email": "didier@vdb.fr",
+    "pseudo": "didier",
     "companyrole": "sailor"
 }
 
@@ -64,10 +64,9 @@ content-type: application/json
   "quantity": 7,
   "day_trip": "2022-12-25",
   "departure": "15:15",
-  "arrival": "00:00",
   "delay_trip": "false",
-  "reason": "",
-  "user_id_": 1
+  "reason": null,
+  "user_id_": 8
 }
 
 ### Récupère un trip OK
@@ -76,20 +75,19 @@ GET http://localhost:5000/api/trips/1
 
 ### Modifie un trip OK
 
-PATCH http://localhost:5000/api/trips/2
+PATCH http://localhost:5000/api/trips/3
 content-type: application/json
 
 {
-    "type_trip": "DIRECT",
-    "boat": "BRÉHATINE",
-    "harbour": "ARCOUEST",
-    "departure": "15:35",
-    "arrival": null,
-    "day_trip": "2023-01-09",
-    "quantity": 59,
-    "delay_trip": "true",
-    "reason": "",
-    "user_id_": 2
+  "boat": "Bréhatine",
+  "type_trip": "Directe",
+  "harbour": "Arcouest",
+  "quantity": 7,
+  "day_trip": "2022-12-25",
+  "departure": "15:15",
+  "delay_trip": "false",
+  "reason": null,
+  "user_id_": 8
 }
 
 ### Supprime un trip OK
@@ -102,6 +100,6 @@ POST http://localhost:5000/api/login
 content-type: application/json
 
 {
-    "email": "carlos@vvdb.fr",
+    "pseudo": "carlos@vvdb.fr",
     "password": "Hello22+"
 }

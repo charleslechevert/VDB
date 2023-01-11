@@ -1,3 +1,7 @@
+const { trip } = require("../controllers/tripController");
+const moment = require('moment')
+const fetch = require('node-fetch')
+
   const authMiddleware = {
   // Le but de ce middleware est de rediriger l'utilisateur sur la page de connection si il essaye d'accèder à une route nécessitant la connection.
   checkIsLogged(req, res, next) {
@@ -16,6 +20,29 @@
     } else {
       // Si il est connecter je le laisse faire l'action
       next();
+    }
+  },
+  async checkIsTripOwner(req,res,next) {
+    //If admin, get access anyway
+    if(req.session.admin) {
+      next()
+      return;
+    //If not admin, get access only if the trip belong to the user and only if the current day matches with the day of the trip.
+    } else {
+      try {
+        const response = await fetch(`http://localhost:5000/api/trips/${req.params.id}`)
+        let trip = await response.json()
+        trip.day_trip = moment(trip.day_trip).format('YYYY-MM-DD')
+        if(trip.user_id_ == req.session.userID && trip.day_trip == moment(new Date().toISOString().substring(0, 10)).format('YYYY-MM-DD')) {
+          next()
+          return;
+        } else {
+          res.redirect('/')
+        }
+
+        } catch(error) {
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement');
+        }
     }
   }
 }

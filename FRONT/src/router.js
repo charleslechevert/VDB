@@ -21,8 +21,8 @@ router.get("/trip",authMiddleware.checkIsLogged,tripController.trip);
 router.post("/trip",authMiddleware.checkIsLogged,tripController.addTrip);
 router.post("/delete/trip/:id",authMiddleware.checkIsLogged,tripController.deleteTrip);
 
-router.get("/modifytrip/:id",authMiddleware.checkIsLogged,tripController.renderModifyTrip)
-router.post("/modifytrip/:id",authMiddleware.checkIsLogged,tripController.sendModifyTrip)
+router.get("/modifytrip/:id",authMiddleware.checkIsLogged,authMiddleware.checkIsTripOwner,tripController.renderModifyTrip)
+router.post("/modifytrip/:id",authMiddleware.checkIsLogged,authMiddleware.checkIsTripOwner,tripController.sendModifyTrip)
 
 router.get("/history",authMiddleware.checkIsLogged,controller.history);
 router.post("/history",authMiddleware.checkIsLogged,controller.history);

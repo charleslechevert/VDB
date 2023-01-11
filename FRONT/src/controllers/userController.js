@@ -8,7 +8,7 @@ async deleteUser(req,res) {
         });
 
     } catch(err) {
-        res.send('Une erreur est survenue, veuillez réesayer ultérieurement');
+        res.send('Une erreur est survenue, veuillez réessayer ultérieurement');
     }
 
     res.redirect('/users')

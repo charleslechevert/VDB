@@ -65,7 +65,7 @@ const excelController = {
         workbook.xlsx.write(res)
         
         } catch(err) {
-            res.send('Une erreur est survenue. Veuillez réesayer plus tard!')
+            res.send('Une erreur est survenue. Veuillez réessayer plus tard!')
         }
         res.redirect('/export')
     }

@@ -10,10 +10,13 @@
     <% if(admin) { %>
     <form class="history__date-input-container" method="post">
         <input class="history__date-input" type="date" id="day_selected" name="day_selected">
-        <input type="submit" value="OK">
+        <input type="submit" value="OK" class="history__date-input-validate">
     </form>
     <%  } %>
     <div>
+        <%if(trips.length == 0) { %>
+            <p class="history__message-no-trip">Pas de traversée pour ce jour &#9875</p>
+        <% } %>
         <% for (trip of trips) { %>
         <!-- START TRIP LINEE-->
         <a href="/modifytrip/<%= trip.id %>" class="tripline__container">

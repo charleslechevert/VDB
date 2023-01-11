@@ -22,7 +22,7 @@ const authController = {
             const response = await fetch('http://localhost:5000/api/users');
              users = await response.json();
         } catch(err) {
-            res.send('Une erreur est survenue, veuillez réesayer ultérieurement');
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement');
         }
 
         const correctPseudo = users.find(user => user.pseudo == pseudo)
@@ -73,7 +73,7 @@ const authController = {
             const response = await fetch('http://localhost:5000/api/users');
              users = await response.json();
         } catch(err) {
-            res.send('Une erreur est survenue, veuillez réesayer ultérieurement')
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement')
         }
 
         const pseudoFound = users.find(user => user.pseudo == req.body.pseudo)

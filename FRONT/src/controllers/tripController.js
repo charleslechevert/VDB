@@ -16,7 +16,7 @@ const tripController = {
             });
 
         } catch(err) {
-            res.send('Une erreur est survenue, veuillez réesayer ultérieurement')
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement')
         }
 
         res.redirect('/history')
@@ -58,7 +58,7 @@ const tripController = {
             const createdCard = await response.json()
         
         } catch(err) {
-            res.send('Une erreur est survenue, veuillez réesayer ultérieurement')
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement')
         }
         res.redirect('/history')
     },
@@ -76,7 +76,7 @@ const tripController = {
 
             res.render("modifytrip", { trip, admin, todayDate, todayDate_formatted })
             } catch(error) {
-                res.send('Une erreur est survenue, veuillez réesayer ultérieurement');
+                res.send('Une erreur est survenue, veuillez réessayer ultérieurement');
             }
     },
     async sendModifyTrip(req,res) {
@@ -112,7 +112,7 @@ const tripController = {
             //const createdCard = await response.json()
         
         } catch(err) {
-            res.send('Une erreur est survenue, veuillez réesayer ultérieurement')
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement')
         }
         res.redirect('/history')
 

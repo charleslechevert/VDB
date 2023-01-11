@@ -29,7 +29,6 @@ console.log('yo')
 
 app.use("/api/users",userRouter);
 app.use("/api/trips",tripRouter);
-app.use("/api/login",authRouter);
 
 app.use(errorHandler._404);
 
