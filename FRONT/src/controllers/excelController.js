@@ -151,7 +151,7 @@ data =
   }
 ]
 
-const workbook = new ExcelJS.Workbook();
+const workbook = new excelJS.Workbook();
 const worksheet = workbook.addWorksheet('Raw Data');
 
 worksheet.columns = [
