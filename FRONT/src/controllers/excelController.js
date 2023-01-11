@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 const fs = require("fs")
-const exceljs = require("exceljs")
+const excelJS = require("exceljs")
 const moment = require('moment')
 
 const excelController = {
