@@ -9,7 +9,7 @@ const excelController = {
     },
     async exportData(req,res) {
         
-        try {
+        
             const response = await fetch(`http://localhost:5000/api/trips/excel`, {
                 method: 'POST',
                 // on passe les données du formulaire en body du POST
@@ -57,10 +57,7 @@ const excelController = {
 
         workbook.xlsx.write(res)
 
-        } catch(err) {
-            res.send('Une erreur est survenue. Veuillez réessayer plus tard!')
-        }
-        res.redirect('/export')
+
 
     }
 }
