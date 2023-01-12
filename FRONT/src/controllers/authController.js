@@ -53,7 +53,6 @@ const authController = {
     async users(req,res) {
         const response = await fetch('http://localhost:5000/api/users');
         users = await response.json();
-        console.log(users)
         res.render('users', {users})
 
     },

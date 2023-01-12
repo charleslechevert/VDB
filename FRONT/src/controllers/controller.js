@@ -45,7 +45,7 @@ const controller = {
         res.render("history", { trips, admin })
 
         } catch(error) {
-            console.log(error)
+            res.send('Une erreur est survenue, veuillez réessayer ultérieurement')
         }
     }
 

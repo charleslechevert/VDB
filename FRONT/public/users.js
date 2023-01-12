@@ -1,7 +1,6 @@
 //Pass id value to delete the correct user.
 
 deleteUsers = document.querySelectorAll('#user_delete')
-console.log(deleteUsers)
 
 for(let i =0;i<deleteUsers.length;i++) {
     deleteUsers[i].addEventListener('click', () => {

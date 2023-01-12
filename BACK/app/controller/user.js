@@ -6,7 +6,6 @@ const controller = {
         res.json(users);
     },
     async addUser(req,res){
-        console.log(req.body)
         const user = req.body;
 
         const userDB = await userModel.insert(user);

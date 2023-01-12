@@ -42,11 +42,9 @@ const errorHandler = {
      */
     async logError(err,url) {
         const separator = ";";
-        // console.log(err.stack);
         // 1. Je vérifie si le fichier n'existe pas
         // on essaie d'ouvrir le fichier, s'il n'existe pas, on va avoir une erreur et donc on le crèe
         const filePath = getFilePath();
-        // console.log(filePath);
         let file;
         try{
             file = await open(filePath);

@@ -6,7 +6,6 @@ const controller = {
         res.json(trips);
     },
     async addTrip(req,res){
-        console.log(req.body)
         const trip = req.body;
 
         const tripDB = await tripModel.insert(trip);
@@ -39,7 +38,6 @@ const controller = {
         res.json(result);
     },
     async getExcelExport(req,res) {
-        console.log(req.body)
         const result= await tripModel.findExcelExport(req.body.start, req.body.end)
         res.json(result)
     }

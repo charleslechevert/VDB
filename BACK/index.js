@@ -25,7 +25,6 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 
-console.log('yo')
 
 app.use("/api/users",userRouter);
 app.use("/api/trips",tripRouter);
