@@ -20,7 +20,6 @@
         <div class="user__table-row user__header">
             <p class="user__pseudo">PSEUDO</p>
             <p class="user__role">ADMIN?</p>
-            <p class="user__delete"></p>
         </div>
         <% for(user of users) { %>
         <div class="user__table-row" >
@@ -31,10 +30,7 @@
                 <p class="user__role">NON</p>
             <% } %>
             
-            <div class="user__delete" id="user_delete" data-id=<%=user.id%>>
-                <img class="user__tabl-img" src="delete.png"  alt="">
-            </div>
-            
+
         </div>
         <% } %>
 

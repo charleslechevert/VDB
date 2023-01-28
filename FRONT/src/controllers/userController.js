@@ -1,20 +1,20 @@
-const fetch = require('node-fetch')
+const fetch = require("node-fetch");
 
 const userController = {
-async deleteUser(req,res) {
+  async deleteUser(req, res) {
     try {
-        const response = await fetch(`http://localhost:5000/api/users/${req.params.id}`, {
-            method: 'DELETE',
-        });
-
-    } catch(err) {
-        res.send('Une erreur est survenue, veuillez réessayer ultérieurement');
+      const response = await fetch(
+        `http://localhost:5000/api/users/${req.params.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+    } catch (err) {
+      res.send("Une erreur est survenue, veuillez réessayer ultérieurement");
     }
 
-    res.redirect('/users')
-
-}
-
+    res.redirect("/users");
+  },
 };
 
 module.exports = userController;

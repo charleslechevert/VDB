@@ -9,17 +9,16 @@
             <p> </p>
             <form class="form" method="post">
                 <div class="form__container-item">
-                    <label class="form__label"> pseudo</label> <input class="form__input" id = "pseudo" value="carlosg" name="pseudo">
+                    <label class="form__label"> pseudo</label> <input class="form__input" id = "pseudo"  name="pseudo">
                 </div>
                 <div class="form__container-item">
                     <label class="form__label">mot de passe</label>
-                    <input class="form__input" type="password" id = "password" value="Hello22+" name="password">
+                    <input class="form__input" type="password" id = "password"  name="password">
                 </div>
                 <% if(locals.errorMessage) { %>
                     <p class="errmsg"><%=errorMessage%></p>
                 <% } %> 
                 <button class="form__validate">Valider</button>
-                <div class="form__forgot">Mot de passe oublié?</div>
             </form>
         </div>
         </div>
