@@ -42,7 +42,7 @@
   background-color: white;
   text-transform: uppercase;
   border: 1px solid black;
-  -webkit-appearance: none;
+  color: black;
 }
 
 .tripform__option {
