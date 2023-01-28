@@ -42,6 +42,7 @@
   background-color: white;
   text-transform: uppercase;
   border: 1px solid black;
+  -webkit-appearance: none;
 }
 
 .tripform__option {
@@ -243,7 +244,6 @@
   border-radius: 20px;
   height: 4vh;
   margin: 1.8vh;
-  -webkit-appearance: none;
 }
 
 .history__date-input-validate {
