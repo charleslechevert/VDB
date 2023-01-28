@@ -59,6 +59,7 @@
 .tripform__hours {
   padding: 1vh;
   border-radius: 25px;
+  color: black;
 }
 
 .tripform__title--container {
