@@ -15,30 +15,30 @@
         <p id="day_trip-fixed"class="tripform__date-fixed"> <%=todayDate_formatted%> </p>
         <% } %>
         <label class="tripform__label">Bateau</label> 
-        <select name="boat" id="boat" data-boat="<%=trip.boat%>" class="tripform__select">
-            <option class="tripform__option" value="BRÉHATINE">Bréhatine</option>
-            <option class="tripform__option" value="ENEZ VRIAD">Enez Vriad</option>
-            <option class="tripform__option" value="ENEZIZ">Eneziz</option>
-            <option class="tripform__option" value="KEPHRENN">Kephrenn</option>
-            <option class="tripform__option" value="KEHOPS">Kehops</option>
+        <select name="boat" id="boat" class="tripform__select">
+            <option class="tripform__option" value="BRÉHATINE" <%= trip.boat === 'BRÉHATINE' ? 'selected' : '' %>>Bréhatine</option>
+            <option class="tripform__option" value="ENEZ VRIAD"  <%= trip.boat === 'ENEZ VRIAD' ? 'selected' : '' %>>Enez Vriad</option>
+            <option class="tripform__option" value="ENEZIZ" <%= trip.boat === 'ENEZIZ' ? 'selected' : '' %>>Eneziz</option>
+            <option class="tripform__option" value="KEPHRENN" <%= trip.boat === 'KEPHRENN' ? 'selected' : '' %>>Kephrenn</option>
+            <option class="tripform__option" value="KEHOPS" <%= trip.boat === 'KEHOPS' ? 'selected' : '' %>>Kehops</option>
         </select>
         <label class="tripform__label">Type de traversée</label>
-        <select name="type_trip" id="type_trip" data-type_trip="<%=trip.type_trip%>" class="tripform__select">
-            <option class="tripform__option" value="DIRECTE">Directe</option>
-            <option class="tripform__option" value="TOUR">Tour de l'île</option>
-            <option class="tripform__option" value="EXTÉRIEUR">Extérieur</option>
-            <option class="tripform__option" value="AFFRÊTEMENT">Affrêtement</option>
+        <select name="type_trip" id="type_trip"  class="tripform__select">
+            <option class="tripform__option" value="DIRECTE"  <%= trip.type_trip === 'DIRECTE' ? 'selected' : '' %>>Directe</option>
+            <option class="tripform__option" value="TOUR"  <%= trip.type_trip === 'TOUR' ? 'selected' : '' %>>Tour de l'île</option>
+            <option class="tripform__option" value="EXTÉRIEUR"  <%= trip.type_trip === 'EXTÉRIEUR' ? 'selected' : '' %>>Extérieur</option>
+            <option class="tripform__option" value="AFFRÊTEMENT"  <%= trip.type_trip === 'AFFRÊTEMENT' ? 'selected' : '' %>>Affrêtement</option>
         </select>
         <label class="tripform__label">Port</label>
-        <select name="harbour" id="harbour" data-harbour="<%=trip.harbour%>" class="tripform__select">
-            <option class="tripform__option" value="ARCOUEST">Arcouest</option>
-            <option class="tripform__option" value="BRÉHAT">Bréhat</option>
-            <option class="tripform__option" value="ERQUY">Erquy</option>
-            <option class="tripform__option" value="SAINT QUAY">Saint Quay</option>
-            <option class="tripform__option" value="SAINT QUAY-BINIC">Saint Quay-Binic</option>
-            <option class="tripform__option" value="TRIEUX">Trieux</option>
-            <option class="tripform__option" value="PARC ÉOLIEN">Parc Éolien</option>
-            <option class="tripform__option" value="ROUEN">Rouen</option>
+        <select name="harbour" id="harbour"  class="tripform__select">
+            <option class="tripform__option" value="ARCOUEST" <%= trip.harbour === 'ARCOUEST' ? 'selected' : '' %>>Arcouest</option>
+            <option class="tripform__option" value="BRÉHAT" <%= trip.harbour === 'BRÉHAT' ? 'selected' : '' %>>Bréhat</option>
+            <option class="tripform__option" value="ERQUY" <%= trip.harbour === 'ERQUY' ? 'selected' : '' %>>Erquy</option>
+            <option class="tripform__option" value="SAINT QUAY" <%= trip.harbour === 'SAINT QUAY' ? 'selected' : '' %>>Saint Quay</option>
+            <option class="tripform__option" value="SAINT QUAY-BINIC" <%= trip.harbour === 'SAINT QUAY-BINIC' ? 'selected' : '' %>>Saint Quay-Binic</option>
+            <option class="tripform__option" value="TRIEUX" <%= trip.harbour === 'TRIEUX' ? 'selected' : '' %>>Trieux</option>
+            <option class="tripform__option" value="PARC ÉOLIEN" <%= trip.harbour === 'PARC ÉOLIEN' ? 'selected' : '' %>>Parc Éolien</option>
+            <option class="tripform__option" value="ROUEN" <%= trip.harbour === 'ROUEN' ? 'selected' : '' %>>Rouen</option>
         </select>
         <label class="tripform__label">Nombre de passagers</label>
         <input type ="number" name="quantity" class="tripform__input--passenger" value="<%=trip.quantity%>" required>
