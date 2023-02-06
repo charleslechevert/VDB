@@ -17,6 +17,30 @@
         <%if(trips.length == 0) { %>
             <p class="history__message-no-trip">Pas de traversée pour ce jour &#9875</p>
         <% } %>
+
+
+        <div class="history__stats">
+            <div class="history__stat-sum-passengers-by-type-container">
+                <div class="history__stats-sum-passengers-title">Directe</div>
+                <div class="tripline__info-text tripline__info-text-background-direct"><%= passengers_sum[0] %></div>
+            </div>
+            <div class="history__stat-sum-passengers-by-type-container">
+                <div class="history__stats-sum-passengers-title">Tour</div>
+                <div class="tripline__info-text tripline__info-text-background-tour"><%= passengers_sum[1] %></div>
+            </div>
+            <div class="history__stat-sum-passengers-by-type-container">
+                <div class="history__stats-sum-passengers-title">Ext</div>
+                <div class="tripline__info-text tripline__info-text-background"><%= passengers_sum[2] %></div>
+            </div>
+            <div class="history__stat-sum-passengers-by-type-container">
+                <div class="history__stats-sum-passengers-title">Affr</div>
+                <div class="tripline__info-text tripline__info-text-background"><%= passengers_sum[3] %></div>
+            </div>
+            <div class="history__stat-sum-passengers-by-type-container">
+                <div class="history__stats-sum-passengers-title">Total</div>
+                <div class="tripline__info-text tripline__info-text-background"><%= passengers_sum[4] %></div>
+            </div>
+        </div>
         <% for (trip of trips) { %>
         <!-- START TRIP LINEE-->
         <a href="/modifytrip/<%= trip.id %>" class="tripline__container">
