@@ -1,126 +1,134 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, rgb(142, 224, 133) 0%,     rgb(27, 20, 122) 100%);
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgb(142, 224, 133) 0%,
+    rgb(27, 20, 122) 100%
+  );
 }
 
-#root{
-    height:100%;
+#root {
+  height: 100%;
 }
 
 .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90vw;
-    max-width: 800px;
-    border-radius: 7px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding : 2vh 0;
-    
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
+  max-width: 800px;
+  border-radius: 7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2vh 0;
 }
 
 .login__title-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  height: 20%;
 }
 
 img {
-    height: 8vh;
+  height: 8vh;
 }
 
 .login__title-text {
-    background: linear-gradient(135deg, rgb(142, 224, 133) 0%,     rgb(27, 20, 122) 100%);
-    padding: 1vh 3vh;
-    border-radius: 25px;
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
+  background: linear-gradient(
+    135deg,
+    rgb(142, 224, 133) 0%,
+    rgb(27, 20, 122) 100%
+  );
+  padding: 1vh 3vh;
+  border-radius: 25px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 form {
-    height : 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .form__container-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin:1.5vh;
-    width: 100%;
-    
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.5vh;
+  width: 100%;
 }
 
 .form__label {
-    margin-bottom: 0.8vh;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 1.3vh auto;
+  margin-bottom: 0.8vh;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 1.3vh auto;
 }
 
 .form__input {
-    border : none;
-    border: 2px solid rgb(123, 123, 123);
-    border-radius: 20px;
-    max-width: 350px;
-    max-width: 40vw;
-    margin: 0 auto;
-    height: 4vh;
-
+  border: none;
+  border: 2px solid rgb(123, 123, 123);
+  border-radius: 20px;
+  max-width: 350px;
+  max-width: 40vw;
+  margin: 0 auto;
+  height: 4vh;
 }
 
 .form__validate {
-    background: linear-gradient(135deg, rgb(142, 224, 133) 0%,     rgb(27, 20, 122) 100%);
-    width: 200px;
-    padding: 1vh;
-    border: none;
-    border-radius: 25px;
-    font-size: 4vh;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 3vh 0;
-
+  background: linear-gradient(
+    135deg,
+    rgb(142, 224, 133) 0%,
+    rgb(27, 20, 122) 100%
+  );
+  width: 200px;
+  padding: 1vh;
+  border: none;
+  border-radius: 25px;
+  font-size: 4vh;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 3vh 0;
 }
 
 .form__forgot {
-    color: gray;
+  color: gray;
 }
 
 .errmsg {
-    color: rgb(177, 27, 27);
-    font-weight: bold;
-    text-transform: uppercase;
-    padding : 0 2vh 0 2vh;
-    text-align: center;
+  color: rgb(177, 27, 27);
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0 2vh 0 2vh;
+  text-align: center;
+  margin: 1vh 0;
 }

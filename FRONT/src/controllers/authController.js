@@ -78,6 +78,7 @@ const authController = {
       });
       return;
     }
+
     if (req.body.password !== req.body.password_conf) {
       res.render("signup", {
         errorMessage: "Mot de passe différent de la confirmation",

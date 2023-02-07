@@ -82,6 +82,22 @@ router.get(
   authMiddleware.checkIsPublic,
   authController.users
 );
+
+router.get(
+  "/user/:id",
+  authMiddleware.checkIsAdmin,
+  authMiddleware.checkIsPublic,
+  userController.getUser
+);
+
+//Patch new password
+router.post(
+  "/user/:id",
+  authMiddleware.checkIsAdmin,
+  authMiddleware.checkIsPublic,
+  userController.patchUser
+);
+
 router.post(
   "/delete/user/:id",
   authMiddleware.checkIsAdmin,
