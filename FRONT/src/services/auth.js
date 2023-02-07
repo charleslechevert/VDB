@@ -49,6 +49,14 @@ const authMiddleware = {
       }
     }
   },
+  checkIsPublic(req, res, next) {
+    if (req.session.userPseudo == "ADMINPUBLIQUE") {
+      res.redirect("/");
+    } else {
+      // Si il est connecter je le laisse faire l'action
+      next();
+    }
+  },
 };
 
 module.exports = authMiddleware;

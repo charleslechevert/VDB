@@ -81,6 +81,23 @@ const userModel = {
 
     return;
   },
+
+  async patch(data, id) {
+    //Check if password and password_conf are the same
+
+    try {
+      const sqlQuery = `UPDATE public.user
+            SET password=$1 WHERE id=$2;`;
+      const values = [data.password, id];
+      const result = await client.query(sqlQuery, values);
+
+      // à voir ce que je remonte
+    } catch (err) {
+      errorHandler.logError(err);
+    }
+
+    return;
+  },
 };
 
 module.exports = userModel;

@@ -39,9 +39,34 @@ const controller = {
         trips = trips.filter((trip) => trip.user_id_ == req.session.userID);
       }
 
+      //Render passengers stats for the day
+      let passengers_sum = [];
+      const trip_types = ["DIRECTE", "TOUR", "EXTÉRIEUR", "AFFRÊTEMENT"];
+
+      if (trips.length) {
+        for (type of trip_types) {
+          let totalPassengers;
+          if (trips.filter((item) => item.type_trip == type).length) {
+            totalPassengers = trips
+              .filter((item) => item.type_trip == type)
+              .map((item) => item.quantity)
+              .reduce((prev, next) => prev + next);
+          } else {
+            totalPassengers = 0;
+          }
+          passengers_sum.push(totalPassengers);
+        }
+
+        passengers_sum.push(
+          trips.map((item) => item.quantity).reduce((prev, next) => prev + next)
+        );
+      } else {
+        passengers_sum = [0, 0, 0, 0, 0];
+      }
+
       const admin = req.session.admin;
 
-      res.render("history", { trips, admin });
+      res.render("history", { trips, admin, passengers_sum });
     } catch (error) {
       res.send("Une erreur est survenue, veuillez réessayer ultérieurement");
     }

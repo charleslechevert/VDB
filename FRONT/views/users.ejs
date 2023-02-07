@@ -16,22 +16,22 @@
         <a class="user__add-button" href="/signup">Ajouter un utilisateur</a>
     </div>
 
+    <div class="user__description">Pour changer le mot de passe, vous pouvez cliquer sur l'utilisateur concerné</div>
+
     <div class="user__table">
         <div class="user__table-row user__header">
             <p class="user__pseudo">PSEUDO</p>
             <p class="user__role">ADMIN?</p>
         </div>
         <% for(user of users) { %>
-        <div class="user__table-row" >
+        <a href="/user/<%=user.id%>" class="user__table-row" >
             <p class="user__pseudo"><%= user.pseudo%></p>
             <% if(user.admin) { %>
                 <p class="user__role">OUI</p>
             <% } else { %>
                 <p class="user__role">NON</p>
             <% } %>
-            
-
-        </div>
+            </a>
         <% } %>
 
     </div>

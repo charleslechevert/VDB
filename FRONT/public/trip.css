@@ -152,6 +152,7 @@
   text-transform: uppercase;
   font-size: 3vw;
   font-weight: bold;
+  text-align: center;
 }
 
 .tripline__info-text-background-direct {
@@ -266,4 +267,23 @@
   text-transform: uppercase;
   font-weight: 600;
   text-align: center;
+}
+
+.history__stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2vh;
+}
+
+.history__stat-sum-passengers-by-type-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.history__stats-sum-passengers-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1vh;
 }

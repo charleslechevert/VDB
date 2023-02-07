@@ -42,9 +42,6 @@
                     <label class="form__label">confirmer mot de passe</label>
                     <input class="form__input" type="password" id = "password_conf" name="password_conf" minlength="8" required>
                 </div>
-                <% if(locals.errorMessage) { %>
-                    <p class="errmsg"><%=errorMessage%></p>
-                <% } %> 
                 <button class="form__validate">Valider</button>
             </form>
         </div>
