@@ -17,7 +17,7 @@ const model = {
     let tripDB;
     try {
       const sqlQuery =
-        "INSERT INTO public.trip(type_trip, boat, harbour, departure, day_trip, quantity, delay_trip, reason, user_id_) VALUES ($1, $2, $3, $4,$5,$6, $7, $8, $9) RETURNING *;";
+        "INSERT INTO public.trip(type_trip, boat, harbour, departure, day_trip, quantity, no_quota, delay_trip, reason, user_id_) VALUES ($1, $2, $3, $4,$5,$6, $7, $8, $9, $10) RETURNING *;";
       const values = [
         trip.type_trip,
         trip.boat,
@@ -25,6 +25,7 @@ const model = {
         trip.departure,
         trip.day_trip,
         trip.quantity,
+        trip.no_quota,
         trip.delay_trip,
         trip.reason,
         trip.user_id_,
@@ -54,8 +55,8 @@ const model = {
     let tripDB;
     try {
       const sqlQuery = `UPDATE public.trip
-            SET type_trip=$1, boat=$2, harbour=$3, departure=$4, day_trip=$5, quantity=$6, delay_trip=$7, reason=$8, user_id_=$9
-            WHERE id=$10 RETURNING *;`;
+            SET type_trip=$1, boat=$2, harbour=$3, departure=$4, day_trip=$5, quantity=$6, no_quota=$7, delay_trip=$8, reason=$9, user_id_=$10
+            WHERE id=$11 RETURNING *;`;
       const values = [
         trip.type_trip,
         trip.boat,
@@ -63,6 +64,7 @@ const model = {
         trip.departure,
         trip.day_trip,
         trip.quantity,
+        trip.no_quota,
         trip.delay_trip,
         trip.reason,
         trip.user_id_,
@@ -94,7 +96,7 @@ const model = {
     let trips;
     try {
       const result = await client.query(
-        `SELECT trip.id, trip.type_trip, trip.boat, trip.harbour, trip.departure, trip.day_trip, trip.quantity, trip.delay_trip, trip.reason, trip.user_id_, "user".fname FROM trip LEFT JOIN "user" ON trip.user_id_="user".id`
+        `SELECT trip.id, trip.type_trip, trip.boat, trip.harbour, trip.departure, trip.day_trip, trip.quantity, trip.no_quota, trip.delay_trip, trip.reason, trip.user_id_, "user".fname FROM trip LEFT JOIN "user" ON trip.user_id_="user".id`
       );
       trips = result.rows;
     } catch (err) {

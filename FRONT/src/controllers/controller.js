@@ -10,7 +10,7 @@ const controller = {
   },
   async history(req, res) {
     try {
-      trips = await tripModel.findTripsWithUser();
+      let trips = await tripModel.findTripsWithUser();
 
       //Render data by date and time in descending order
       trips = _.orderBy(
@@ -19,7 +19,7 @@ const controller = {
         ["desc", "desc"]
       );
 
-      for (trip of trips) {
+      for (let trip of trips) {
         trip.day_trip = moment(trip.day_trip).format("DD/MM/YYYY");
       }
 
@@ -44,7 +44,7 @@ const controller = {
       const trip_types = ["DIRECTE", "TOUR", "EXTÉRIEUR", "AFFRÊTEMENT"];
 
       if (trips.length) {
-        for (type of trip_types) {
+        for (let type of trip_types) {
           let totalPassengers;
           if (trips.filter((item) => item.type_trip == type).length) {
             totalPassengers = trips
@@ -63,6 +63,30 @@ const controller = {
       } else {
         passengers_sum = [0, 0, 0, 0, 0];
       }
+
+      // Calculate sum of no_quota for DIRECTE and TOUR
+      let no_quota_sum_directe = 0;
+      let no_quota_sum_tour = 0;
+
+      if (trips.length) {
+        no_quota_sum_directe = trips
+          .filter(
+            (item) => item.type_trip == "DIRECTE" && item.harbour == "BRÉHAT"
+          )
+          .map((item) => item.no_quota)
+          .reduce((prev, next) => prev + next, 0);
+
+        no_quota_sum_tour = trips
+          .filter(
+            (item) => item.type_trip == "TOUR" && item.harbour == "BRÉHAT"
+          )
+          .map((item) => item.no_quota)
+          .reduce((prev, next) => prev + next, 0);
+      }
+
+      // Push the no_quota sums to passengers_sum array
+      passengers_sum.push(no_quota_sum_directe, no_quota_sum_tour);
+      console.log(passengers_sum);
 
       const admin = req.session.admin;
 
