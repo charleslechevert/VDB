@@ -71,14 +71,14 @@ const controller = {
       if (trips.length) {
         no_quota_sum_directe = trips
           .filter(
-            (item) => item.type_trip == "DIRECTE" && item.harbour == "BRÉHAT"
+            (item) => item.type_trip == "DIRECTE" && item.harbour == "ARCOUEST"
           )
           .map((item) => item.no_quota)
           .reduce((prev, next) => prev + next, 0);
 
         no_quota_sum_tour = trips
           .filter(
-            (item) => item.type_trip == "TOUR" && item.harbour == "BRÉHAT"
+            (item) => item.type_trip == "TOUR" && item.harbour == "ARCOUEST"
           )
           .map((item) => item.no_quota)
           .reduce((prev, next) => prev + next, 0);
