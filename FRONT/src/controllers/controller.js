@@ -65,27 +65,32 @@ const controller = {
       }
 
       // Calculate sum of no_quota for DIRECTE and TOUR
-      let no_quota_sum_directe = 0;
-      let no_quota_sum_tour = 0;
+      let quantity_after_no_quota_directe_sum = 0;
+      let quantity_after_no_quota_tour_sum = 0;
 
       if (trips.length) {
-        no_quota_sum_directe = trips
+        // ... existing code ...
+
+        quantity_after_no_quota_directe_sum = trips
           .filter(
             (item) => item.type_trip == "DIRECTE" && item.harbour == "ARCOUEST"
           )
-          .map((item) => item.no_quota)
+          .map((item) => item.quantity - item.no_quota)
           .reduce((prev, next) => prev + next, 0);
 
-        no_quota_sum_tour = trips
+        quantity_after_no_quota_tour_sum = trips
           .filter(
             (item) => item.type_trip == "TOUR" && item.harbour == "ARCOUEST"
           )
-          .map((item) => item.no_quota)
+          .map((item) => item.quantity - item.no_quota)
           .reduce((prev, next) => prev + next, 0);
       }
 
       // Push the no_quota sums to passengers_sum array
-      passengers_sum.push(no_quota_sum_directe, no_quota_sum_tour);
+      passengers_sum.push(
+        quantity_after_no_quota_directe_sum,
+        quantity_after_no_quota_tour_sum
+      );
       console.log(passengers_sum);
 
       const admin = req.session.admin;

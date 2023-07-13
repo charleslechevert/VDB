@@ -44,11 +44,11 @@
         <div class="history__stats">
             <div class="history__stat-sum-passengers-by-type-container">
                 <div class="history__stats-sum-passengers-title">Quota directe</div>
-                <div class="tripline__info-text tripline__info-text-background"><%= passengers_sum[0] - passengers_sum[5] %></div>
+                <div class="tripline__info-text tripline__info-text-background"><%=  passengers_sum[5] %></div>
             </div>
             <div class="history__stat-sum-passengers-by-type-container">
                 <div class="history__stats-sum-passengers-title">Quota tour</div>
-                <div class="tripline__info-text tripline__info-text-background"><%= passengers_sum[1] - passengers_sum[6] %></div>
+                <div class="tripline__info-text tripline__info-text-background"><%=  passengers_sum[6] %></div>
             </div>
         </div>
         <% for (trip of trips) { %>
