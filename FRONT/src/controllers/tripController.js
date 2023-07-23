@@ -79,6 +79,7 @@ const tripController = {
       data.departure = serviceFunction.timeModulo5(data.departure);
 
       data.quantity = parseInt(data.quantity);
+      data.no_quota = parseInt(data.no_quota);
 
       const tripDB = await tripModel.update(req.params.id, data);
     } catch (err) {

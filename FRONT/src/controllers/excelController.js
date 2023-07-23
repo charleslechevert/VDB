@@ -24,6 +24,7 @@ const excelController = {
       { header: "retard", key: "delay_trip" },
       { header: "raison", key: "reason" },
       { header: "pilote", key: "fname" },
+      { header: "non quotas", key: "no_quota" },
     ];
 
     trips.forEach((row) => {
@@ -38,6 +39,7 @@ const excelController = {
         row.delay_trip,
         row.reason,
         row.fname,
+        row.no_quota,
       ]);
     });
 

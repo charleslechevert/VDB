@@ -42,6 +42,8 @@
         </select>
         <label class="tripform__label">Nombre de passagers</label>
         <input type ="number" name="quantity" class="tripform__input--passenger" value="<%=trip.quantity%>" required>
+        <label class="tripform__label">Hors Quotas</label>
+        <input type="number" name="no_quota" class="tripform__input--passenger" value="<%=trip.no_quota%>"  required>
         <label class="tripform__label" value="14:30">Heure de départ</label>
         <input class="tripform__hours" type="time" id="departure" value="<%=trip.departure%>" name="departure"
             min="06:00" max="23:00" required>
