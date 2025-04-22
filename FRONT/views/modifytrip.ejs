@@ -25,7 +25,6 @@
         <label class="tripform__label">Type de traversée</label>
         <select name="type_trip" id="type_trip"  class="tripform__select">
             <option class="tripform__option" value="DIRECTE"  <%= trip.type_trip === 'DIRECTE' ? 'selected' : '' %>>Directe</option>
-            <option class="tripform__option" value="TOUR"  <%= trip.type_trip === 'TOUR' ? 'selected' : '' %>>Tour de l'île</option>
             <option class="tripform__option" value="EXTÉRIEUR"  <%= trip.type_trip === 'EXTÉRIEUR' ? 'selected' : '' %>>Extérieur</option>
             <option class="tripform__option" value="AFFRÊTEMENT"  <%= trip.type_trip === 'AFFRÊTEMENT' ? 'selected' : '' %>>Affrêtement</option>
         </select>
@@ -45,6 +44,14 @@
             <option class="tripform__option" value="ÉOLIEN ST QUAY" <%= trip.harbour === 'ÉOLIEN ST QUAY' ? 'selected' : '' %>>Éolien St Quay</option>
 
             <option class="tripform__option" value="ROUEN" <%= trip.harbour === 'ROUEN' ? 'selected' : '' %>>Rouen</option>
+
+            <option class="tripform__option" value="ROUEN" <%= trip.harbour === 'ROUEN' ? 'selected' : '' %>>Rouen</option>
+
+            <option class="tripform__option" value="BINIC" <%= trip.harbour === 'BINIC' ? 'selected' : '' %>>Binic</option>
+            <option class="tripform__option" value="EOLIEN DAHOUËT" <%= trip.harbour === 'EOLIEN DAHOUËT' ? 'selected' : '' %>>Eolien Dahouët</option>
+            <option class="tripform__option" value="EOLIEN ERQUY" <%= trip.harbour === 'EOLIEN ERQUY' ? 'selected' : '' %>>Eolien Erquy</option>
+            <option class="tripform__option" value="ROUTE DES PHARES" <%= trip.harbour === 'ROUTE DES PHARES' ? 'selected' : '' %>>Route des Phares</option>
+
         </select>
         <label class="tripform__label">Nombre de passagers</label>
         <input type ="number" name="quantity" class="tripform__input--passenger" value="<%=trip.quantity%>" required>
