@@ -27,6 +27,7 @@
             <option class="tripform__option" value="DIRECTE"  <%= trip.type_trip === 'DIRECTE' ? 'selected' : '' %>>Directe</option>
             <option class="tripform__option" value="EXTÉRIEUR"  <%= trip.type_trip === 'EXTÉRIEUR' ? 'selected' : '' %>>Extérieur</option>
             <option class="tripform__option" value="AFFRÊTEMENT"  <%= trip.type_trip === 'AFFRÊTEMENT' ? 'selected' : '' %>>Affrêtement</option>
+            <option class="tripform__option" value="TOUR"  <%= trip.type_trip === 'TOUR' ? 'selected' : '' %>>Tour de l'île</option>
         </select>
         <label class="tripform__label">Port</label>
         <select name="harbour" id="harbour"  class="tripform__select">
